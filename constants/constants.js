@@ -3,7 +3,7 @@ const screens = {
   home: 'Home',
   search: 'Search',
   cart: 'Cart',
-  favourite: 'My Favourite',
+  favourite: 'Favourite',
   notification: 'Notification',
   my_wallet: 'My Wallet',
 };
