@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import React, {useEffect, useRef} from 'react';
+import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -26,6 +26,8 @@ const MainLayout = ({
   setSelectedTab,
   navigation,
 }) => {
+  const flatlistRef = useRef();
+
   // Reanimated Shared Value
   //home
   const homeTabFlex = useSharedValue(1);
@@ -115,6 +117,10 @@ const MainLayout = ({
   useEffect(() => {
     // home
     if (selectedTab == constants.screens.home) {
+      flatlistRef?.current?.scrollToIndex({
+        index: 0,
+        animated: false,
+      });
       homeTabFlex.value = withTiming(4, {duration: 500});
       homeTabColor.value = withTiming(COLORS.primary, {duration: 500});
     } else {
@@ -124,6 +130,10 @@ const MainLayout = ({
 
     //search
     if (selectedTab == constants.screens.search) {
+      flatlistRef?.current?.scrollToIndex({
+        index: 1,
+        animated: false,
+      });
       searchTabFlex.value = withTiming(4, {duration: 500});
       searchTabColor.value = withTiming(COLORS.primary, {duration: 500});
     } else {
@@ -133,6 +143,10 @@ const MainLayout = ({
 
     // cart
     if (selectedTab == constants.screens.cart) {
+      flatlistRef?.current?.scrollToIndex({
+        index: 2,
+        animated: false,
+      });
       cartTabFlex.value = withTiming(4, {duration: 500});
       cartTabColor.value = withTiming(COLORS.primary, {duration: 500});
     } else {
@@ -142,6 +156,10 @@ const MainLayout = ({
 
     // favourite
     if (selectedTab == constants.screens.favourite) {
+      flatlistRef?.current?.scrollToIndex({
+        index: 3,
+        animated: false,
+      });
       favouriteTabFlex.value = withTiming(4, {duration: 500});
       favouriteTabColor.value = withTiming(COLORS.primary, {duration: 500});
     } else {
@@ -151,6 +169,10 @@ const MainLayout = ({
 
     // notification
     if (selectedTab == constants.screens.notification) {
+      flatlistRef?.current?.scrollToIndex({
+        index: 4,
+        animated: false,
+      });
       notificationTabFlex.value = withTiming(4, {duration: 500});
       notificationTabColor.value = withTiming(COLORS.primary, {duration: 500});
     } else {
@@ -208,10 +230,33 @@ const MainLayout = ({
           </TouchableOpacity>
         }
       />
+
       {/* Conetent */}
       <View style={{flex: 1}}>
         <Text>MainLayout</Text>
       </View>
+      <FlatList
+        ref={flatlistRef}
+        horizontal
+        scrollEnabled={false}
+        pagingEnabled
+        snapToAlignment="center"
+        snapToInterval={SIZES.width}
+        showsHorizontalScrollIndicator={false}
+        data={constants.bottom_tabs}
+        keyExtractor={item => `${item.id}`}
+        renderItem={({item, index}) => {
+          return (
+            <View style={{height: SIZES.height, width: SIZES.width}}>
+              {item.label == constants.screens.home && <Home />}
+              {item.label == constants.screens.search && <Search />}
+              {item.label == constants.screens.cart && <CartTab />}
+              {item.label == constants.screens.favourite && <Favourite />}
+              {item.label == constants.screens.Notification && <Notification />}
+            </View>
+          );
+        }}
+      />
 
       {/* Footer */}
       <View style={{height: 100, justifyContent: 'flex-end'}}>
