@@ -6,6 +6,7 @@ import {
   Animated,
   Text,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {
   COLORS,
@@ -31,11 +32,11 @@ const FilterModal = ({isVisible, onClose}) => {
 
   const [showModal, setShowModal] = useState(isVisible);
 
-  const [deliveryTime, setDeliveryTime] = useState();
+  const [deliveryTime, setDeliveryTime] = useState(1);
 
-  const [ratings, setRatings] = useState('');
+  const [ratings, setRatings] = useState(5);
 
-  const [tags, setTags] = useState('');
+  const [tags, setTags] = useState(1);
 
   useEffect(() => {
     if (showModal) {
@@ -114,6 +115,87 @@ const FilterModal = ({isVisible, onClose}) => {
     );
   };
 
+  const renderPricingRange = () => {
+    return (
+      <Section title="Pricing Range">
+        <View style={{alignItems: 'center'}}>
+          <TwoPointSlider
+            values={[10, 50]}
+            min={1}
+            max={100}
+            prefix="$"
+            postfix=""
+            onValuesChange={values => console.log(values)}
+          />
+        </View>
+      </Section>
+    );
+  };
+
+  const renderRatings = () => {
+    return (
+      <Section title="Ratings">
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          {constants.ratings.map((item, index) => (
+            <TextButton
+              key={`Ratings-${index}`}
+              buttonContainerStyle={{
+                flex: 1,
+                height: 50,
+                margin: 5,
+                borderRadius: SIZES.base,
+                backgroundColor:
+                  item.id == ratings ? COLORS.primary : COLORS.lightGray2,
+              }}
+              label={item.label}
+              labelStyle={{
+                color: item.id == ratings ? COLORS.white : COLORS.gray,
+                marginTop: 5,
+              }}
+              icon={icons.star}
+              iconStyle={{
+                tintColor: item.id == ratings ? COLORS.white : COLORS.gray,
+                marginRight: SIZES.base,
+              }}
+              onPress={() => setRatings(item.id)}
+            />
+          ))}
+        </View>
+      </Section>
+    );
+  };
+
+  const renderTags = () => {
+    return (
+      <Section title="Tags">
+        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+          {constants.tags.map((item, index) => (
+            <TextButton
+              key={`Tags-${index}`}
+              buttonContainerStyle={{
+                height: 40,
+                margin: 5,
+                paddingHorizontal: SIZES.radius,
+                borderRadius: SIZES.base,
+                backgroundColor:
+                  item.id == tags ? COLORS.primary : COLORS.lightGray2,
+              }}
+              label={item.label}
+              labelStyle={{
+                color: item.id == tags ? COLORS.white : COLORS.gray,
+              }}
+              onPress={() => setTags(item.id)}
+            />
+          ))}
+        </View>
+      </Section>
+    );
+  };
+
   return (
     <Modal animationType="fade" transparent={true} visible={isVisible}>
       <View style={{flex: 1, backgroundColor: COLORS.transparentBlack7}}>
@@ -166,7 +248,39 @@ const FilterModal = ({isVisible, onClose}) => {
 
             {/* Delivery Time */}
             {renderDeliveryTime()}
+
+            {/* Pricing Range */}
+            {renderPricingRange()}
+
+            {/* Ratings */}
+            {renderRatings()}
+
+            {/* Tags */}
+            {renderTags()}
           </ScrollView>
+          {/* Apply Button */}
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 150,
+              left: 0,
+              right: 0,
+              height: 110,
+              paddingHorizontal: SIZES.padding,
+              paddingVertical: SIZES.radius,
+              backgroundColor: COLORS.white,
+            }}>
+            <TextButton
+              label="Apply Filters"
+              buttonContainerStyle={{
+                height: 50,
+                borderRadius: SIZES.base,
+                backgroundColor: COLORS.primary,
+              }}
+              labelStyle={{color: COLORS.white}}
+              onPress={() => console.log('apply filter')}
+            />
+          </View>
         </Animated.View>
       </View>
     </Modal>

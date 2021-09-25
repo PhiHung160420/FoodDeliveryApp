@@ -121,16 +121,18 @@ const Home = () => {
           keyExtractor={item => `${item.id}`}
           horizontal
           showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          snapToInterval={SIZES.width * 0.9 + 18}
+          scrollEventThrottle={32}
           renderItem={({item, index}) => (
             <HorizontalFoodCard
-              containerStyle={[
-                styles.horizontalFoodCard,
-                {
-                  marginRight:
-                    index == recommends.length - 1 ? SIZES.padding : 0,
-                  marginLeft: index == 0 ? SIZES.padding : 18,
-                },
-              ]}
+              containerStyle={{
+                height: 180,
+                paddingHorizontal: SIZES.radius,
+                alignItems: 'center',
+                marginRight: index == recommends.length - 1 ? SIZES.padding : 0,
+                marginLeft: index == 0 ? SIZES.padding : 18,
+              }}
               imageStype={styles.imageHorizontalFoodCard}
               item={item}
               onPress={() => console.log('')}
@@ -148,6 +150,8 @@ const Home = () => {
           data={populars}
           keyExtractor={item => `${item.id}`}
           horizontal
+          pagingEnabled
+          snapToInterval={200 + SIZES.padding}
           showsHorizontalScrollIndicator={false}
           renderItem={({item, index}) => (
             <VerticalFoodCard
@@ -300,13 +304,6 @@ const styles = StyleSheet.create({
     marginTop: SIZES.padding,
     paddingHorizontal: 8,
     borderRadius: SIZES.radius,
-  },
-  horizontalFoodCard: {
-    height: 180,
-    width: SIZES.width * 0.85,
-    padding: 18,
-    paddingHorizontal: SIZES.radius,
-    alignItems: 'center',
   },
   imageHorizontalFoodCard: {
     marginTop: 35,

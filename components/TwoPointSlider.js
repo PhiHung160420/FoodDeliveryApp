@@ -3,7 +3,14 @@ import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {COLORS, FONTS, SIZES} from '../constants';
 
-const TwoPointSlider = ({values, min, max, postfix, onValuesChange}) => {
+const TwoPointSlider = ({
+  values,
+  min,
+  max,
+  prefix,
+  postfix,
+  onValuesChange,
+}) => {
   return (
     <MultiSlider
       values={values}
@@ -40,7 +47,9 @@ const TwoPointSlider = ({values, min, max, postfix, onValuesChange}) => {
             }}
           />
           <Text style={{marginTop: 5, color: COLORS.darkGray, ...FONTS.body3}}>
-            {e.currentValue} {postfix}
+            {prefix}
+            {e.currentValue}
+            {postfix}
           </Text>
         </View>
       )}

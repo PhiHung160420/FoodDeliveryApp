@@ -1,19 +1,28 @@
 import React from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
+import {TouchableOpacity, View, Text, Image} from 'react-native';
 import {COLORS, FONTS} from '../constants';
 
-const TextButton = ({label, labelStyle, buttonContainerStyle, onPress}) => {
+const TextButton = ({
+  label,
+  labelStyle,
+  buttonContainerStyle,
+  icon,
+  iconStyle,
+  onPress,
+}) => {
   return (
     <TouchableOpacity
       style={{
-        ...buttonContainerStyle,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        ...buttonContainerStyle,
       }}
       onPress={onPress}>
-      <Text style={{color: COLORS.white, ...FONTS.h3, ...labelStyle}}>
-        {label}
-      </Text>
+      {icon && (
+        <Image source={icon} style={{width: 20, height: 20, ...iconStyle}} />
+      )}
+      <Text style={{...FONTS.h3, ...labelStyle}}>{label}</Text>
     </TouchableOpacity>
   );
 };
