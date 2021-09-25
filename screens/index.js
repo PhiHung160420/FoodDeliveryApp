@@ -16,4 +16,19 @@ import Favourite from './Favourite/Favourite';
 // Notification
 import Notification from './Notification/Notification';
 
-export {MainLayout, Home, Search, CartTab, Favourite, Notification};
+// Onboarding
+import Onboarding from './Onboarding/Onboarding';
+
+// Sign in
+import SignIn from './Authentication/SignIn';
+
+export {
+  MainLayout,
+  Home,
+  Search,
+  CartTab,
+  Favourite,
+  Notification,
+  Onboarding,
+  SignIn,
+};

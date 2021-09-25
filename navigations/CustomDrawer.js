@@ -5,7 +5,7 @@ import {
   DrawerContentScrollView,
   useDrawerProgress,
 } from '@react-navigation/drawer';
-import {MainLayout} from '../screens';
+import {MainLayout, Onboarding} from '../screens';
 import {constants, COLORS, SIZES, FONTS, icons, dummyData} from '../constants';
 import Animated, {interpolateNode} from 'react-native-reanimated';
 import {connect} from 'react-redux';
@@ -137,7 +137,13 @@ const CustomDrawerContent = ({
         </View>
 
         <View style={{marginTop: SIZES.padding * 4}}>
-          <CustomDrawerItem label="Logout" icon={icons.logout} />
+          <CustomDrawerItem
+            label="Logout"
+            icon={icons.logout}
+            onPress={() => {
+              navigation.navigate('Onboarding');
+            }}
+          />
         </View>
       </View>
     </DrawerContentScrollView>
