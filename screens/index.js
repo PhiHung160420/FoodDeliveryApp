@@ -22,6 +22,12 @@ import Onboarding from './Onboarding/Onboarding';
 // Sign in
 import SignIn from './Authentication/SignIn';
 
+// Sign up
+import SignUp from './Authentication/SignUp';
+
+// forgot password
+import ForgotPassword from './Authentication/ForgotPassword';
+
 export {
   MainLayout,
   Home,
@@ -31,4 +37,6 @@ export {
   Notification,
   Onboarding,
   SignIn,
+  SignUp,
+  ForgotPassword,
 };

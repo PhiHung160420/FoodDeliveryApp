@@ -9,9 +9,11 @@ const TextButton = ({
   icon,
   iconStyle,
   onPress,
+  disable,
 }) => {
   return (
     <TouchableOpacity
+      disabled={disable}
       style={{
         flexDirection: 'row',
         justifyContent: 'center',
