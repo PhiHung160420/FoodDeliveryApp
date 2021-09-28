@@ -8,6 +8,7 @@ import {
   SignIn,
   SignUp,
   ForgotPassword,
+  Otp,
 } from './screens';
 import store from './redux/stores/store';
 import {Provider} from 'react-redux';
@@ -20,12 +21,13 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{headerShown: false}}
-          initialRouteName={'Home'}>
+          initialRouteName={'ForgotPassword'}>
           <Stack.Screen name="Home" component={CustomDrawer} />
           <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+          <Stack.Screen name="Otp" component={Otp} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

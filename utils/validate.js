@@ -22,10 +22,19 @@ function validatePassword(value, setPasswordError) {
   }
 }
 
+function validateUsername(value, setUsernameError) {
+  if (value.length > 0) {
+    setUsernameError('');
+  } else {
+    setUsernameError('Username not empty');
+  }
+}
+
 const validate = {
   isValidateEmail,
   validateEmail,
   validatePassword,
+  validateUsername,
 };
 
 export default validate;

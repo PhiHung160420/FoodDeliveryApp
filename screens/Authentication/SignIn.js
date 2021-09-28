@@ -18,7 +18,7 @@ const SignIn = ({navigation}) => {
 
   return (
     <AuthLayout
-      title="Let's Sign You In"
+      title="Let's Sign In"
       subTitle="Welcome back, you've been missed">
       {/* Children */}
       <View style={{flex: 1, marginTop: SIZES.padding * 2}}>
