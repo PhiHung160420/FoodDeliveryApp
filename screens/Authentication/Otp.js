@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import {COLORS, constants, FONTS, icons, images, SIZES} from '../../constants';
 import AuthLayout from './AuthLayout';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
@@ -27,39 +27,23 @@ const Otp = () => {
       title="OTP Authentication"
       subTitle="An authentication code has been sent to your email">
       {/* OTP Input */}
-      <View style={{flex: 1, marginTop: SIZES.padding * 2}}>
+      <View style={styles.container}>
         <OTPInputView
           pinCount={4}
           style={{width: '100%', height: 50}}
-          codeInputFieldStyle={{
-            width: 65,
-            height: 65,
-            borderRadius: SIZES.radius,
-            backgroundColor: COLORS.lightGray2,
-            color: COLORS.black,
-            ...FONTS.h3,
-          }}
+          codeInputFieldStyle={styles.otpInput}
           onCodeFilled={code => console.log(code)}
           autoFocusOnLoad
           codeInputHighlightStyle={{borderColor: COLORS.primary}}
         />
 
         {/* Countdown timer */}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: SIZES.padding,
-          }}>
+        <View style={styles.countDown}>
           <Text style={{color: COLORS.darkGray}}>Didn't receive code?</Text>
           <TextButton
             label={`Resend (${timer}s)`}
             labelStyle={{color: COLORS.primary, ...FONTS.h3}}
-            buttonContainerStyle={{
-              marginLeft: SIZES.base,
-              backgroundColor: null,
-            }}
+            buttonContainerStyle={styles.btnResend}
             onPress={() => setTimer(60)}
           />
         </View>
@@ -69,19 +53,12 @@ const Otp = () => {
       <View>
         <TextButton
           label="Continue"
-          buttonContainerStyle={{
-            height: 50,
-            borderRadius: SIZES.radius,
-            alignItems: 'center',
-            backgroundColor: COLORS.primary,
-          }}
+          buttonContainerStyle={styles.btnContinue}
           labelStyle={{color: COLORS.white, ...FONTS.body2}}
           onPress={() => console.log('continue')}
         />
-        <View style={{marginTop: SIZES.padding, alignItems: 'center'}}>
-          <Text style={{color: COLORS.darkGray, ...FONTS.body3}}>
-            By Signing up, you agree to our
-          </Text>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>By Signing up, you agree to our</Text>
           <TextButton
             label="Terms and Conditions"
             buttonContainerStyle={{backgroundColor: null}}
@@ -93,5 +70,35 @@ const Otp = () => {
     </AuthLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {flex: 1, marginTop: SIZES.padding * 2},
+  otpInput: {
+    width: 65,
+    height: 65,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.lightGray2,
+    color: COLORS.black,
+    ...FONTS.h3,
+  },
+  countDown: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: SIZES.padding,
+  },
+  btnResend: {
+    marginLeft: SIZES.base,
+    backgroundColor: null,
+  },
+  btnContinue: {
+    height: 50,
+    borderRadius: SIZES.radius,
+    alignItems: 'center',
+    backgroundColor: COLORS.primary,
+  },
+  footer: {marginTop: SIZES.padding, alignItems: 'center'},
+  footerText: {color: COLORS.darkGray, ...FONTS.body3},
+});
 
 export default Otp;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import {COLORS, constants, FONTS, icons, images, SIZES} from '../../constants';
 import AuthLayout from './AuthLayout';
 import {validate} from '../../utils';
@@ -17,7 +17,7 @@ const ForgotPassword = ({navigation}) => {
     <AuthLayout
       title="Password Recovery"
       subTitle="Please enter your email address to recover your password">
-      <View style={{flex: 1, marginTop: SIZES.padding * 2}}>
+      <View style={styles.container}>
         {/* Email */}
         <FormInput
           label="Email"
@@ -31,7 +31,7 @@ const ForgotPassword = ({navigation}) => {
             setEmail(value);
           }}
           appendComponent={
-            <View style={{justifyContent: 'center'}}>
+            <View style={styles.content}>
               <Image
                 source={
                   email == '' || (email !== '' && emailError == '')
@@ -57,9 +57,7 @@ const ForgotPassword = ({navigation}) => {
       <TextButton
         label="Send Email"
         buttonContainerStyle={{
-          height: 50,
-          marginTop: SIZES.padding,
-          borderRadius: SIZES.radius,
+          ...styles.buttonContainer,
           backgroundColor: isEnableSendEmail()
             ? COLORS.primary
             : COLORS.transparentPrimray,
@@ -71,5 +69,15 @@ const ForgotPassword = ({navigation}) => {
     </AuthLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {flex: 1, marginTop: SIZES.padding * 2},
+  content: {justifyContent: 'center'},
+  buttonContainer: {
+    height: 50,
+    marginTop: SIZES.padding,
+    borderRadius: SIZES.radius,
+  },
+});
 
 export default ForgotPassword;

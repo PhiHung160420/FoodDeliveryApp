@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {COLORS, constants, FONTS, icons, images, SIZES} from '../../constants';
 import {validate} from '../../utils';
 import AuthLayout from './AuthLayout';
@@ -32,7 +32,7 @@ const SignUp = ({navigation}) => {
       title="Getting Started"
       subTitle="Create an account to continue!">
       {/* Children */}
-      <View style={{flex: 1, marginTop: SIZES.padding * 2}}>
+      <View style={styles.container}>
         {/* Form input and sign up */}
         {/* Email */}
         <FormInput
@@ -119,15 +119,11 @@ const SignUp = ({navigation}) => {
           }}
           appendComponent={
             <TouchableOpacity
-              style={{
-                width: 40,
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-              }}
+              style={styles.btnShowHidePwd}
               onPress={() => setShowPass(!showPass)}>
               <Image
                 source={showPass ? icons.eye_close : icons.eye}
-                style={{width: 25, height: 25, tintColor: COLORS.gray}}
+                style={styles.iconShowHidePwd}
               />
             </TouchableOpacity>
           }
@@ -137,30 +133,23 @@ const SignUp = ({navigation}) => {
         <TextButton
           label="Sign Up"
           buttonContainerStyle={{
-            height: 50,
-            marginTop: SIZES.padding,
-            borderRadius: SIZES.radius,
+            ...styles.btnSignUp,
             backgroundColor: isEnableSignUp()
               ? COLORS.primary
               : COLORS.transparentPrimray,
           }}
           onPress={() => navigation.navigate('Otp')}
           disable={isEnableSignUp() ? false : true}
-          labelStyle={{color: COLORS.white, ...FONTS.body2}}
+          labelStyle={styles.labelSignUp}
         />
 
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: SIZES.radius,
-            justifyContent: 'center',
-          }}>
+        <View style={styles.signIncontainer}>
           <Text style={{color: COLORS.gray, ...FONTS.body3}}>
             Already have an account?
           </Text>
           <TextButton
             label="Sign In"
-            buttonContainerStyle={{backgroundColor: null, marginLeft: 3}}
+            buttonContainerStyle={styles.btnSignIn}
             labelStyle={{color: COLORS.primary, ...FONTS.h3}}
             onPress={() => navigation.goBack()}
           />
@@ -171,37 +160,63 @@ const SignUp = ({navigation}) => {
           <TextButton
             label="Continue With Facebook"
             icon={icons.fb}
-            buttonContainerStyle={{
-              height: 40,
-              borderRadius: SIZES.radius,
-              backgroundColor: COLORS.blue,
-            }}
-            labelStyle={{
-              marginLeft: SIZES.radius,
-              color: COLORS.white,
-              ...FONTS.body3,
-            }}
+            buttonContainerStyle={styles.btnSignInFB}
+            labelStyle={styles.labelBtnFB}
           />
 
           {/* Google */}
           <TextButton
             label="Continue With Google"
             icon={icons.google}
-            buttonContainerStyle={{
-              height: 40,
-              borderRadius: SIZES.radius,
-              backgroundColor: COLORS.lightGray2,
-              marginTop: SIZES.radius,
-            }}
-            labelStyle={{
-              marginLeft: SIZES.radius,
-              ...FONTS.body3,
-            }}
+            buttonContainerStyle={styles.btnSignInGG}
+            labelStyle={styles.labelBtnGG}
           />
         </View>
       </View>
     </AuthLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {flex: 1, marginTop: SIZES.padding * 2},
+  btnShowHidePwd: {
+    width: 40,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  iconShowHidePwd: {width: 25, height: 25, tintColor: COLORS.gray},
+  btnSignUp: {
+    height: 50,
+    marginTop: SIZES.padding,
+    borderRadius: SIZES.radius,
+  },
+  labelSignUp: {color: COLORS.white, ...FONTS.body2},
+  signIncontainer: {
+    flexDirection: 'row',
+    marginTop: SIZES.radius,
+    justifyContent: 'center',
+  },
+  btnSignIn: {backgroundColor: null, marginLeft: 3},
+  btnSignInFB: {
+    height: 40,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.blue,
+  },
+  labelBtnFB: {
+    marginLeft: SIZES.radius,
+    color: COLORS.white,
+    ...FONTS.body3,
+  },
+  btnSignInGG: {
+    height: 40,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.lightGray2,
+    marginTop: SIZES.radius,
+  },
+  labelBtnGG: {
+    marginLeft: SIZES.radius,
+    ...FONTS.body3,
+  },
+});
 
 export default SignUp;

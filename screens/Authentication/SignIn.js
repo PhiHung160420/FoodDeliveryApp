@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import AuthLayout from './AuthLayout';
 import {FormInput, CustomSwitch, TextButton} from '../../components';
 import {COLORS, constants, FONTS, icons, images, SIZES} from '../../constants';
@@ -21,7 +21,7 @@ const SignIn = ({navigation}) => {
       title="Let's Sign In"
       subTitle="Welcome back, you've been missed">
       {/* Children */}
-      <View style={{flex: 1, marginTop: SIZES.padding * 2}}>
+      <View style={styles.container}>
         {/* Form Inputs */}
         {/* Email */}
         <FormInput
@@ -71,15 +71,11 @@ const SignIn = ({navigation}) => {
           }}
           appendComponent={
             <TouchableOpacity
-              style={{
-                width: 40,
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-              }}
+              style={styles.btnShowHidePwd}
               onPress={() => setShowPass(!showPass)}>
               <Image
                 source={showPass ? icons.eye_close : icons.eye}
-                style={{width: 25, height: 25, tintColor: COLORS.gray}}
+                style={styles.iconPwd}
               />
             </TouchableOpacity>
           }
@@ -88,12 +84,7 @@ const SignIn = ({navigation}) => {
         />
 
         {/* Save me & Forgot Password */}
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: SIZES.radius,
-            justifyContent: 'space-between',
-          }}>
+        <View style={styles.saveAccount}>
           <CustomSwitch value={saveMe} onChange={value => setSaveMe(value)} />
           <TextButton
             label="Forgot Password?"
@@ -108,10 +99,7 @@ const SignIn = ({navigation}) => {
           label="Sign In"
           disable={isEnableSignIn() ? false : true}
           buttonContainerStyle={{
-            height: 55,
-            alignItems: 'center',
-            marginTop: SIZES.padding,
-            borderRadius: SIZES.radius,
+            ...styles.signInBtn,
             backgroundColor: isEnableSignIn()
               ? COLORS.primary
               : COLORS.transparentPrimray,
@@ -120,14 +108,9 @@ const SignIn = ({navigation}) => {
         />
 
         {/* Sign Up */}
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: SIZES.radius,
-            justifyContent: 'center',
-          }}>
+        <View style={styles.signUpContainer}>
           <Text style={{color: COLORS.gray, ...FONTS.body3}}>
-            Don't have an account?{' '}
+            Don't have an account?
           </Text>
           <TextButton
             label="Sign Up"
@@ -143,37 +126,67 @@ const SignIn = ({navigation}) => {
           <TextButton
             label="Continue With Facebook"
             icon={icons.fb}
-            buttonContainerStyle={{
-              height: 50,
-              borderRadius: SIZES.radius,
-              backgroundColor: COLORS.blue,
-            }}
-            labelStyle={{
-              marginLeft: SIZES.radius,
-              color: COLORS.white,
-              ...FONTS.body3,
-            }}
+            buttonContainerStyle={styles.btnLoginFB}
+            labelStyle={styles.lableFB}
           />
 
           {/* Google */}
           <TextButton
             label="Continue With Google"
             icon={icons.google}
-            buttonContainerStyle={{
-              height: 50,
-              borderRadius: SIZES.radius,
-              backgroundColor: COLORS.lightGray2,
-              marginTop: SIZES.radius,
-            }}
-            labelStyle={{
-              marginLeft: SIZES.radius,
-              ...FONTS.body3,
-            }}
+            buttonContainerStyle={styles.btnLoginGG}
+            labelStyle={styles.labelGG}
           />
         </View>
       </View>
     </AuthLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {flex: 1, marginTop: SIZES.padding * 2},
+  btnShowHidePwd: {
+    width: 40,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  iconPwd: {width: 25, height: 25, tintColor: COLORS.gray},
+  saveAccount: {
+    flexDirection: 'row',
+    marginTop: SIZES.radius,
+    justifyContent: 'space-between',
+  },
+  signInBtn: {
+    height: 55,
+    alignItems: 'center',
+    marginTop: SIZES.padding,
+    borderRadius: SIZES.radius,
+  },
+  btnLoginFB: {
+    height: 50,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.blue,
+  },
+  lableFB: {
+    marginLeft: SIZES.radius,
+    color: COLORS.white,
+    ...FONTS.body3,
+  },
+  btnLoginGG: {
+    height: 50,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.lightGray2,
+    marginTop: SIZES.radius,
+  },
+  labelGG: {
+    marginLeft: SIZES.radius,
+    ...FONTS.body3,
+  },
+  signUpContainer: {
+    flexDirection: 'row',
+    marginTop: SIZES.radius,
+    justifyContent: 'center',
+  },
+});
 
 export default SignIn;
