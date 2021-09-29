@@ -31,6 +31,22 @@ import ForgotPassword from './Authentication/ForgotPassword';
 // OTP
 import Otp from './Authentication/Otp';
 
+// Food
+import FoodDetail from './Food/FoodDetail';
+
+// Cart
+import Checkout from './Cart/Checkout';
+import MyCart from './Cart/MyCart';
+import Success from './Cart/Success';
+
+// Card
+import AddCard from './Card/AddCard';
+import MyCard from './Card/MyCard';
+
+// Delivery
+import DeliveryStatus from './Delivery/DeliveryStatus';
+import Map from './Delivery/Map';
+
 export {
   MainLayout,
   Home,
@@ -43,4 +59,12 @@ export {
   SignUp,
   ForgotPassword,
   Otp,
+  FoodDetail,
+  Checkout,
+  MyCart,
+  Success,
+  AddCard,
+  MyCard,
+  DeliveryStatus,
+  Map,
 };
