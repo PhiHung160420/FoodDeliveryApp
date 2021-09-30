@@ -6,10 +6,12 @@ const TextButton = ({
   label,
   labelStyle,
   buttonContainerStyle,
-  icon,
+  icon = null,
   iconStyle,
   onPress,
   disable,
+  label2 = '',
+  label2Style,
 }) => {
   return (
     <TouchableOpacity
@@ -21,10 +23,22 @@ const TextButton = ({
         ...buttonContainerStyle,
       }}
       onPress={onPress}>
-      {icon && (
+      {icon != null && (
         <Image source={icon} style={{width: 20, height: 20, ...iconStyle}} />
       )}
       <Text style={{...FONTS.h3, ...labelStyle}}>{label}</Text>
+      {label2 != '' && (
+        <Text
+          style={{
+            flex: 1,
+            textAlign: 'right',
+            color: COLORS.white,
+            ...FONTS.h3,
+            ...label2Style,
+          }}>
+          {label2}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };

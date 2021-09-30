@@ -156,6 +156,9 @@ const Home = () => {
           renderItem={({item, index}) => (
             <VerticalFoodCard
               containerStyle={{
+                width: 200,
+                padding: SIZES.radius,
+                alignItems: 'center',
                 marginLeft: index == 0 ? SIZES.padding : 18,
                 marginRight: index == populars.length - 1 ? SIZES.padding : 0,
               }}

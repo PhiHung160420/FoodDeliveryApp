@@ -7,6 +7,11 @@ import TwoPointSlider from './TwoPointSlider';
 import TextButton from './TextButton';
 import FormInput from './FormInput';
 import CustomSwitch from './CustomSwitch';
+import CartQuantityButton from './CartQuantityButton';
+import IconLabel from './IconLabel';
+import LineDivider from './LineDivider';
+import Rating from './Rating';
+import StepperInput from './StepperInput';
 
 export {
   Header,
@@ -18,4 +23,9 @@ export {
   TextButton,
   FormInput,
   CustomSwitch,
+  CartQuantityButton,
+  IconLabel,
+  LineDivider,
+  Rating,
+  StepperInput,
 };
