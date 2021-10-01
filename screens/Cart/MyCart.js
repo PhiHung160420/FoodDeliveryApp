@@ -101,7 +101,7 @@ const MyCart = ({navigation}) => {
       subTotal={37.97}
       shippingCost={0.0}
       total={37.97}
-      onPress={() => navigation.navigate('Checkout')}
+      onPress={() => navigation.navigate('MyCard')}
     />
   );
 
@@ -136,11 +136,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.gray2,
   },
   iconBack: {width: 20, height: 20, tintColor: COLORS.gray2},
-  headerContainer: {
-    marginTop: 40,
-    marginHorizontal: SIZES.padding,
-    alignItems: 'center',
-  },
   cartItemContainer: {
     flexDirection: 'row',
     alignItems: 'center',

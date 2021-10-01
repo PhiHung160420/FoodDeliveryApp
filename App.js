@@ -29,7 +29,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{headerShown: false}}
-          initialRouteName={'MyCart'}>
+          initialRouteName={'MyCard'}>
           <Stack.Screen name="Home" component={CustomDrawer} />
 
           <Stack.Screen name="Onboarding" component={Onboarding} />
