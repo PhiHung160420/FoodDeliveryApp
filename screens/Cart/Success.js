@@ -3,7 +3,7 @@ import {View, BackHandler, Image, Text, StyleSheet} from 'react-native';
 import {TextButton} from '../../components';
 import {COLORS, FONTS, icons, images, SIZES} from '../../constants';
 
-const Success = () => {
+const Success = ({navigation}) => {
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
@@ -31,7 +31,7 @@ const Success = () => {
       <TextButton
         label="Done"
         buttonContainerStyle={styles.buttonContainer}
-        onPress={() => navigator.navigate('DeliveryStatus')}
+        onPress={() => navigation.navigate('DeliveryStatus')}
         labelStyle={styles.buttonLabel}
       />
     </View>
