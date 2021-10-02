@@ -220,7 +220,7 @@ const AddCard = ({navigation, route}) => {
           }}
           labelStyle={{...FONTS.body2, color: COLORS.white}}
           disable={isEnableAddCard() ? false : true}
-          onPress={() => navigation.navigate('Checkout')}
+          onPress={() => navigation.goBack()}
         />
       </View>
     );

@@ -4,9 +4,15 @@ import LinearGradient from 'react-native-linear-gradient';
 import {LineDivider, TextButton} from '.';
 import {COLORS, FONTS, icons, SIZES} from '../constants';
 
-const FooterTotal = ({subTotal, shippingCost, total, onPress}) => {
+const FooterTotal = ({
+  containerStyle,
+  subTotal,
+  shippingCost,
+  total,
+  onPress,
+}) => {
   return (
-    <View>
+    <View style={{...containerStyle}}>
       {/* Shadow */}
       <LinearGradient
         start={{x: 0, y: 0}}
