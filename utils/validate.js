@@ -30,11 +30,20 @@ function validateUsername(value, setUsernameError) {
   }
 }
 
+function validateInput(value, minLength, setError) {
+  if (value.length < minLength) {
+    setError('Invalid Input');
+  } else {
+    setError('');
+  }
+}
+
 const validate = {
   isValidateEmail,
   validateEmail,
   validatePassword,
   validateUsername,
+  validateInput,
 };
 
 export default validate;
