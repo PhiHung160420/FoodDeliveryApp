@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
 
 export const RootStack = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}} /* initialRouteName={'FoodDetail'} */>
+    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={'MyCard'}>
       <Stack.Screen name="Home" component={CustomDrawer} />
 
       <Stack.Screen name="Onboarding" component={OnboardingScreen} /> 

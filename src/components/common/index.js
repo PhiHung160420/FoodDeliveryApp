@@ -19,6 +19,7 @@ import RadioButton from './Buttons/RadioButton';
 import AuthLayout from './sections/AuthLayout';
 import SearchInput from './Inputs/SearchInput';
 import TextIconButton from './Buttons/TextIconButton';
+import PaymentCard from './Cards/PaymentCard';
 
 export {
   Header,
@@ -41,5 +42,6 @@ export {
   RadioButton,
   AuthLayout,
   SearchInput,
-  TextIconButton
+  TextIconButton,
+  PaymentCard
 };

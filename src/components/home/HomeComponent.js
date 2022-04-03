@@ -125,11 +125,11 @@ const HomeComponent = (props) => {
             <TextButton
               key={index} 
               label={item.name}
-              isSelected={selectedMenuType == item.id}
               buttonContainerStyle={{
                 marginLeft: SIZES.padding,
                 marginRight: index == data.menu.length - 1 ? SIZES.padding : 0,
               }}
+              labelStyle={{color: selectedMenuType == item.id ? COLORS.primary : COLORS.black}}
               onPress={() => {
                 setSelectedMenuType(item.id);
                 handleChangeCategory(selectedCategoryId, item.id);

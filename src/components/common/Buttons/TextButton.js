@@ -10,7 +10,6 @@ const TextButton = ({
   iconStyle,
   onPress,
   disable,
-  isSelected = false,
   label2 = '',
   label2Style,
 }) => {
@@ -22,7 +21,7 @@ const TextButton = ({
     >
       {icon != null && <Image source={icon} style={[styles.icon, iconStyle]} />}
 
-      <Text style={[styles.label_1, labelStyle, {color: isSelected ? COLORS.primary : COLORS.black}]}>{label}</Text>
+      <Text style={[styles.label_1, labelStyle]}>{label}</Text>
       
       {label2 != '' && <Text style={[styles.label_2,label2Style]}>{label2}</Text>}
     </TouchableOpacity>

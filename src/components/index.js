@@ -5,6 +5,12 @@ import SignInComponent from './authentication/signin/SignInComponent';
 import OtpComponent from './authentication/otp/OtpComponent';
 import ForgotPasswordComponent from './authentication/forgotPassword/ForgotPasswordComponent';
 import HomeComponent from './home/HomeComponent';
+import FoodDetailComponent from './food/FoodDetailComponent';
+import MyCartComponent from './cart/MyCartComponent';
+import AddCardComponent from './card/AddCardComponent';
+import MyCardComponent from './card/MyCardComponent';
+import CheckoutComponent from './checkout/CheckoutComponent';
+import SuccessComponent from './checkout/SuccessComponent';
 
 export {
   LayoutComponent,
@@ -13,5 +19,11 @@ export {
   SignInComponent,
   OtpComponent,
   ForgotPasswordComponent,
-  HomeComponent
+  HomeComponent,
+  FoodDetailComponent,
+  MyCartComponent,
+  AddCardComponent,
+  MyCardComponent,
+  CheckoutComponent,
+  SuccessComponent
 }

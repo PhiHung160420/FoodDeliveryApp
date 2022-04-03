@@ -32,9 +32,9 @@ import OtpScreen from './authentication/OtpScreen';
 import FoodDetailScreen from './food/FoodDetailScreen';
 
 // Cart
-import CheckoutScreen from './cart/CheckoutScreen';
+import CheckoutScreen from './checkout/CheckoutScreen';
 import MyCartScreen from './cart/MyCartScreen';
-import SuccessScreen from './cart/SuccessScreen';
+import SuccessScreen from './checkout/SuccessScreen';
 
 // Card
 import AddCardScreen from './card/AddCardScreen';

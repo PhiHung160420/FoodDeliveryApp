@@ -1,20 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react'
 import {View, BackHandler, Image, Text, StyleSheet} from 'react-native';
 import {TextButton} from 'components/common';
-import {COLORS, FONTS, icons, images, SIZES} from '../../constants';
+import {COLORS, FONTS, icons, images, SIZES} from 'constants';
+import { useNavigation } from '@react-navigation/native';
 
-const SuccessScreen = ({navigation}) => {
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      () => {
-        return true;
-      },
-    );
-
-    return () => backHandler.remove();
-  }, []);
-
+const SuccessComponent = () => {
+  const navigation = useNavigation();
+  
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -35,7 +27,7 @@ const SuccessScreen = ({navigation}) => {
         labelStyle={styles.buttonLabel}
       />
     </View>
-  );
+  )
 };
 
 const styles = StyleSheet.create({
@@ -63,7 +55,10 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     backgroundColor: COLORS.primary,
   },
-  buttonLabel: {...FONTS.body2, color: COLORS.white},
+  buttonLabel: {
+    ...FONTS.body2, 
+    color: COLORS.white
+  },
 });
 
-export default SuccessScreen;
+export default SuccessComponent
