@@ -15,7 +15,7 @@ import {
   FONTS,
   icons,
   SIZES,
-} from '../../constants';
+} from 'constants';
 import {IconButton, TwoPointSlider, TextButton} from 'components/common';
 
 const Section = ({children, containerStyle, title}) => {

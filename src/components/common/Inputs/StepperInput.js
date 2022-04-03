@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {IconButton} from '../..';
-import {COLORS, FONTS, icons, SIZES} from '../../../constants';
+import {IconButton} from 'components/common';
+import {COLORS, FONTS, icons, SIZES} from 'constants';
 
 const StepperInput = ({containerStyle, value = 1, onAdd, onMinus}) => {
   return (

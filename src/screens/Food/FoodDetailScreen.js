@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, ScrollView, Image, Text} from 'react-native';
-import {COLORS, dummyData, FONTS, icons, images, SIZES} from '../../constants';
+import {COLORS, data, FONTS, icons, images, SIZES} from 'constants';
 import {
   Header,
   TextButton,
@@ -12,8 +12,8 @@ import {
   StepperInput,
 } from 'components/common';
 
-const FoodDetailScreen = ({navigation}) => {
-  const [foodItem, setFoodItem] = useState(dummyData.vegBiryani);
+const FoodDetailScreen = ({navigation, route}) => {
+  const foodItem = route?.params;
   const [selectedSize, setSelectedSize] = useState('');
   const [qty, setQty] = useState(1);
 
@@ -36,49 +36,23 @@ const FoodDetailScreen = ({navigation}) => {
 
   const renderFoodDetail = () => (
     <View style={styles.foodDetailContainer}>
-      {/* Food Card */}
       <View style={styles.foodCard}>
-        {/* Calories & Favourite */}
         <View style={styles.foodCardHeader}>
-          {/* Calories */}
           <View style={styles.calories}>
-            <Image source={icons.calories} style={{width: 30, height: 30}} />
-            <Text style={{color: COLORS.gray2, ...FONTS.body4}}>Calories</Text>
+            <Image source={icons.calories} style={styles.caloriesIcon} />
+            <Text style={styles.caloriesText}>Calories</Text>
           </View>
-          {/* Favourite */}
-          <Image
-            source={icons.love}
-            style={{
-              width: 20,
-              height: 20,
-              tintColor: foodItem?.isFavourite ? COLORS.primary : COLORS.gray,
-            }}
-          />
+          <Image source={icons.love} style={[styles.heartIcon, {tintColor: foodItem?.isFavourite ? COLORS.primary : COLORS.gray,}]}/>
         </View>
 
-        {/* Food Image */}
-        <Image
-          source={foodItem.image}
-          style={{height: 180, width: '100%'}}
-          resizeMode="contain"
-        />
+        <Image source={foodItem.image} style={styles.foodImage} resizeMode="contain" />
       </View>
 
-      {/* Food Info */}
-      <View style={{marginTop: SIZES.padding}}>
-        <Text style={{...FONTS.h1}}>{foodItem?.name}</Text>
-        <Text
-          style={{
-            marginTop: SIZES.base,
-            color: COLORS.darkGray,
-            ...FONTS.body3,
-          }}>
-          {foodItem?.description}
-        </Text>
+      <View style={styles.foodInfo}>
+        <Text style={styles.foodName}>{foodItem?.name}</Text>
+        <Text style={styles.foodDescription}>{foodItem?.description}</Text>
 
-        {/* Rating, Duration & Shipping */}
-        <View style={{flexDirection: 'row', marginTop: SIZES.padding}}>
-          {/* Rating */}
+        <View style={styles.flexRow}>
           <IconLabel
             containerStyle={{backgroundColor: COLORS.primary}}
             icon={icons.star}
@@ -86,7 +60,6 @@ const FoodDetailScreen = ({navigation}) => {
             labelStyle={{color: COLORS.white}}
           />
 
-          {/* Duration */}
           <IconLabel
             containerStyle={{marginLeft: SIZES.radius, paddingHorizontal: 0}}
             icon={icons.clock}
@@ -94,7 +67,6 @@ const FoodDetailScreen = ({navigation}) => {
             label="30 Mins"
           />
 
-          {/* Shipping */}
           <IconLabel
             containerStyle={{marginLeft: SIZES.radius, paddingHorizontal: 0}}
             icon={icons.dollar}
@@ -103,31 +75,20 @@ const FoodDetailScreen = ({navigation}) => {
           />
         </View>
 
-        {/* Sizes */}
         <View
-          style={{
-            flexDirection: 'row',
-            marginTop: SIZES.padding,
-            alignItems: 'center',
-          }}>
-          <Text style={{...FONTS.h3}}>Sizes: </Text>
-          <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-            {dummyData.sizes.map((item, index) => (
+          style={styles.sizeContainer}>
+          <Text style={styles.sizeLabel}>Sizes: </Text>
+          <View style={styles.sizesList}>
+            {data.sizes.map((item, index) => (
               <TextButton
                 key={`sizes-${index}`}
                 label={item.label}
-                buttonContainerStyle={{
-                  width: 50,
-                  height: 50,
-                  margin: SIZES.base,
-                  borderRadius: SIZES.radius,
-                  borderColor:
-                    selectedSize == item.id ? COLORS.primary : COLORS.gray2,
-                  borderWidth: 1,
-                  backgroundColor:
-                    selectedSize == item.id ? COLORS.primary : null,
-                }}
-                labelStyle={{color: COLORS.gray2}}
+                buttonContainerStyle={[styles.sizeItem,
+                {
+                  borderColor: selectedSize == item.id ? COLORS.primary : COLORS.gray2,
+                  backgroundColor: selectedSize == item.id ? COLORS.primary : null,
+                }]}
+                labelStyle={styles.sizeContent}
                 onPress={() => setSelectedSize(item.id)}
               />
             ))}
@@ -137,29 +98,15 @@ const FoodDetailScreen = ({navigation}) => {
     </View>
   );
 
-  const renderRestaurant = () => {
+  const renderProfile = () => {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          marginVertical: SIZES.padding,
-          paddingHorizontal: SIZES.padding,
-          alignItems: 'center',
-        }}>
-        <Image
-          source={images.profile}
-          style={{width: 50, height: 50, borderRadius: SIZES.radius}}
-        />
+      <View style={styles.profileContainer}>
+        <Image source={images.profile} style={styles.profileImage} />
 
-        {/* Info */}
-        <View
-          style={{flex: 1, marginLeft: SIZES.radius, justifyContent: 'center'}}>
-          <Text style={{...FONTS.h3}}>My Restaurant</Text>
-          <Text style={{color: COLORS.gray, ...FONTS.body4}}>
-            1.2 Km away form you
-          </Text>
+        <View style={styles.profileInfo}>
+          <Text style={styles.profileName}>My Restaurant</Text>
+          <Text style={styles.profileDesc}>1.2 Km away form you</Text>
         </View>
-        {/* Ratings */}
         <Rating rating={4} iconStyle={{marginLeft: 3}} />
       </View>
     );
@@ -167,15 +114,7 @@ const FoodDetailScreen = ({navigation}) => {
 
   const renderFooter = () => {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          height: 120,
-          alignItems: 'center',
-          paddingHorizontal: SIZES.padding,
-          paddingVertical: SIZES.radius,
-        }}>
-        {/* Stepper Input */}
+      <View style={styles.footerContainer}>
         <StepperInput
           value={qty}
           onAdd={() => setQty(qty + 1)}
@@ -185,16 +124,8 @@ const FoodDetailScreen = ({navigation}) => {
             }
           }}
         />
-        {/* Text Button */}
         <TextButton
-          buttonContainerStyle={{
-            flex: 1,
-            marginLeft: SIZES.radius,
-            paddingHorizontal: SIZES.radius,
-            height: 60,
-            borderRadius: SIZES.radius,
-            backgroundColor: COLORS.primary,
-          }}
+          buttonContainerStyle={styles.buyButton}
           label="Buy Now"
           labelStyle={{color: COLORS.white}}
           label2="$15.99"
@@ -206,21 +137,18 @@ const FoodDetailScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       {renderHeader()}
 
-      {/* Body */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Food Detail */}
         {renderFoodDetail()}
+
         <LineDivider />
 
-        {/* Restaurant */}
-        {renderRestaurant()}
+        {renderProfile()}
       </ScrollView>
 
       <LineDivider />
-      {/* Footer */}
+
       {renderFooter()}
     </View>
   );
@@ -266,6 +194,97 @@ const styles = StyleSheet.create({
   calories: {
     flexDirection: 'row',
   },
+  caloriesIcon: {
+    width: 30, 
+    height: 30
+  },
+  caloriesText: {
+    color: COLORS.gray2, 
+    ...FONTS.body4
+  },
+  heartIcon: {
+    width: 30,
+    height: 30
+  },
+  foodImage: {
+    height: 180, 
+    width: '100%'
+  },
+  foodInfo: {
+    marginTop: SIZES.padding
+  },
+  foodName: {
+    ...FONTS.h1
+  },
+  foodDescription: {
+    marginTop: SIZES.base,
+    color: COLORS.darkGray,
+    ...FONTS.body3,
+  },
+  flexRow: {
+    flexDirection: 'row', 
+    marginTop: SIZES.padding
+  },
+  sizeContainer: {
+    flexDirection: 'row',
+    marginTop: SIZES.padding,
+    alignItems: 'center',
+  },
+  sizeLabel: {
+    ...FONTS.h3
+  },
+  sizesList: {
+    flexDirection: 'row', 
+    flexWrap: 'wrap'
+  },
+  sizeItem: {
+    width: 50,
+    height: 50,
+    margin: SIZES.base,
+    borderRadius: SIZES.radius,
+    borderWidth: 1,
+  },
+  sizeContent: {
+    color: COLORS.gray2
+  },
+  buyButton: {
+    flex: 1,
+    marginLeft: SIZES.radius,
+    paddingHorizontal: SIZES.radius,
+    height: 60,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.primary,
+  },
+  footerContainer: {
+    flexDirection: 'row',
+    height: 120,
+    alignItems: 'center',
+    paddingHorizontal: SIZES.padding,
+    paddingVertical: SIZES.radius,
+  },
+  profileContainer: {
+    flexDirection: 'row',
+    marginVertical: SIZES.padding,
+    paddingHorizontal: SIZES.padding,
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 50, 
+    height: 50, 
+    borderRadius: SIZES.radius
+  },
+  profileInfo: {
+    flex: 1, 
+    marginLeft: SIZES.radius, 
+    justifyContent: 'center'
+  },
+  profileName: {
+    ...FONTS.h3
+  },
+  profileDesc: {
+    color: COLORS.gray, 
+    ...FONTS.body4
+  }
 });
 
 export default FoodDetailScreen;

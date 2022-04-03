@@ -16,6 +16,9 @@ import FooterTotal from './Footers/FooterTotal';
 import CardItem from './Cards/CardItem';
 import FormInputCheck from './Inputs/FormInputCheck';
 import RadioButton from './Buttons/RadioButton';
+import AuthLayout from './sections/AuthLayout';
+import SearchInput from './Inputs/SearchInput';
+import TextIconButton from './Buttons/TextIconButton';
 
 export {
   Header,
@@ -36,4 +39,7 @@ export {
   CardItem,
   FormInputCheck,
   RadioButton,
+  AuthLayout,
+  SearchInput,
+  TextIconButton
 };

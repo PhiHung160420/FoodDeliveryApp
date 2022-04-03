@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   useDrawerProgress,
 } from '@react-navigation/drawer';
 import {LayoutComponent} from 'components';
-import {constants, COLORS, SIZES, FONTS, icons, dummyData} from 'constants';
+import {constants, COLORS, SIZES, FONTS, icons, data, screenNames} from 'constants';
 import Animated, {interpolateNode} from 'react-native-reanimated';
 import {connect} from 'react-redux';
 import {setSelectedTab} from 'actions/tabActions';
@@ -15,24 +15,12 @@ const Drawer = createDrawerNavigator();
 
 const CustomDrawerItem = ({label, icon, onPress, isFocused}) => {
   return (
-    <TouchableOpacity
-      style={{
-        flexDirection: 'row',
-        height: 40,
-        marginBottom: SIZES.base,
-        alignItems: 'center',
-        borderRadius: SIZES.base,
-        paddingLeft: SIZES.base,
-        backgroundColor: isFocused ? COLORS.transparentBlack1 : null,
-      }}
-      onPress={onPress}>
-      <Image
-        source={icon}
-        style={{width: 30, height: 30, tintColor: COLORS.white}}
-      />
-      <Text style={{marginLeft: 10, color: COLORS.white, ...FONTS.h3}}>
-        {label}
-      </Text>
+    <TouchableOpacity 
+      style={[styles.drawerItem, {backgroundColor: isFocused ? COLORS.transparentBlack1 : null}]} 
+      onPress={onPress}
+    >
+      <Image source={icon} style={styles.drawerItemImage}/>
+      <Text style={styles.drawerItemText}>{label}</Text>
     </TouchableOpacity>
   );
 };
@@ -50,84 +38,45 @@ const CustomDrawerContent = ({
   }, [progress]);
 
   return (
-    <DrawerContentScrollView>
-      <View style={{flex: 1, paddingHorizontal: SIZES.radius}}>
+    <DrawerContentScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
         {/* Close Button */}
-        <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
-          <TouchableOpacity
-            style={{alignItems: 'center', justifyContent: 'center'}}
-            onPress={() => navigation.closeDrawer()}>
-            <Image
-              source={icons.cross}
-              style={{height: 35, width: 35, tintColor: COLORS.white}}
-            />
+        <View style={styles.closeButtonContainer}>
+          <TouchableOpacity style={styles.closeButton} onPress={() => navigation.closeDrawer()}>
+            <Image source={icons.cross} style={styles.closeIcon}/>
           </TouchableOpacity>
         </View>
 
         {/* Profile */}
-        <TouchableOpacity
-          style={{
-            flexDirection: 'row',
-            marginTop: SIZES.radius,
-            alignItems: 'center',
-          }}>
-          <Image
-            source={dummyData?.myProfile?.profile_image}
-            style={{width: 50, height: 50}}
-          />
-          <View style={{flexDirection: 'column', marginLeft: SIZES.radius}}>
-            <Text style={{color: COLORS.white, ...FONTS.h3}}>
-              {dummyData?.myProfile?.name}
-            </Text>
-            <Text style={{color: COLORS.white, ...FONTS.body4}}>
-              {dummyData?.myProfile?.address}
-            </Text>
+        <TouchableOpacity style={styles.profileContainer}>
+          <Image source={data?.myProfile?.profile_image} style={styles.profileImage} />
+          <View style={styles.profileInfo}>
+            <Text style={styles.profileName}>{data?.myProfile?.name}</Text>
+            <Text style={styles.profileAddress}>{data?.myProfile?.address}</Text>
           </View>
         </TouchableOpacity>
 
         {/* Drawer Items */}
-        <View style={{flex: 1, marginTop: SIZES.padding}}>
-          <CustomDrawerItem
-            label={constants.screens.home}
-            icon={icons.home}
-            isFocused={selectedTab == constants.screens.home}
-            onPress={() => {
-              setSelectedTab(constants.screens.home);
-              navigation.navigate('MainLayout');
-            }}
-          />
+        <View style={styles.drawerList}>
+          {constants.bottom_tabs.map((item, index) => (
+            <CustomDrawerItem
+              key={index}
+              label={item.label}
+              icon={item.icon}
+              isFocused={selectedTab == item.label}
+              onPress={() => {
+                setSelectedTab(item.label);
+                navigation.navigate(screenNames.Main_Layout);
+              }}
+            />
+          ))}
+
           <CustomDrawerItem
             label={constants.screens.my_wallet}
             icon={icons.wallet}
           />
-          <CustomDrawerItem
-            label={constants.screens.notification}
-            icon={icons.notification}
-            isFocused={selectedTab == constants.screens.notification}
-            onPress={() => {
-              setSelectedTab(constants.screens.notification);
-              navigation.navigate('MainLayout');
-            }}
-          />
-          <CustomDrawerItem
-            label={constants.screens.favourite}
-            icon={icons.favourite}
-            isFocused={selectedTab == constants.screens.favourite}
-            onPress={() => {
-              setSelectedTab(constants.screens.favourite);
-              navigation.navigate('MainLayout');
-            }}
-          />
 
-          {/* Line Divider */}
-          <View
-            style={{
-              height: 1,
-              marginVertical: SIZES.radius,
-              marginLeft: SIZES.radius,
-              backgroundColor: COLORS.lightGray1,
-            }}
-          />
+          <View style={styles.lineDevider}/>
 
           <CustomDrawerItem label="Track Your Order" icon={icons.location} />
           <CustomDrawerItem label="Coupons" icon={icons.coupon} />
@@ -136,13 +85,13 @@ const CustomDrawerContent = ({
           <CustomDrawerItem label="Help Center" icon={icons.help} />
         </View>
 
-        <View style={{marginTop: SIZES.padding * 4}}>
+        <View style={styles.lineDevider}/>
+
+        <View style={styles.logoutButton}>
           <CustomDrawerItem
             label="Logout"
             icon={icons.logout}
-            onPress={() => {
-              navigation.navigate('Onboarding');
-            }}
+            onPress={() => navigation.navigate(screenNames.Onboarding)}
           />
         </View>
       </View>
@@ -165,24 +114,21 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
 
   const animatedStyle = {borderRadius, transform: [{scale}]};
 
+  const screenOptions = () => {
+    return {
+      drawerType: 'slide',
+      overlayColor: 'transparent',
+      drawerStyle: styles.drawerStyle,
+      sceneContainerStyle: styles.sceneContainerStyle,
+      headerShown: false,
+    }
+  };
+
   return (
-    <View style={{flex: 1, backgroundColor: COLORS.primary}}>
+    <View style={styles.background}>
       <Drawer.Navigator
-        screenOptions={{
-          drawerType: 'slide',
-          overlayColor: 'transparent',
-          drawerStyle: {
-            flex: 1,
-            width: '65%',
-            padding: 20,
-            backgroundColor: 'transparent',
-          },
-          sceneContainerStyle: {
-            backgroundColor: 'transparent',
-          },
-          headerShown: false,
-        }}
-        initialRouteName="MainLayout"
+        screenOptions={screenOptions()}
+        initialRouteName={screenNames.Main_Layout}
         drawerContent={props => {
           return (
             <CustomDrawerContent
@@ -193,7 +139,7 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
             />
           );
         }}>
-        <Drawer.Screen name="MainLayout">
+        <Drawer.Screen name={screenNames.Main_Layout}>
           {props => (
             <LayoutComponent {...props} drawerAnimationStyle={animatedStyle} />
           )}
@@ -216,5 +162,91 @@ const mapDispatchToProps = dispatch => {
     },
   };
 };
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1, 
+    backgroundColor: COLORS.primary
+  },
+  drawerItem: {
+    flexDirection: 'row',
+    height: 40,
+    marginBottom: SIZES.base,
+    alignItems: 'center',
+    borderRadius: SIZES.base,
+    paddingLeft: SIZES.base,
+  },
+  drawerItemImage: {
+    width: 30, 
+    height: 30, 
+    tintColor: COLORS.white
+  },
+  drawerItemText: {
+    marginLeft: 10, 
+    color: COLORS.white, 
+    ...FONTS.h3
+  },
+  container: {
+    flex: 1, 
+    paddingHorizontal: SIZES.radius
+  },
+  closeButtonContainer: {
+    alignItems: 'flex-start', 
+    justifyContent: 'center'
+  },
+  closeButton: {
+    alignItems: 'center', 
+    justifyContent: 'center'
+  },
+  closeIcon: {
+    height: 35, 
+    width: 35, 
+    tintColor: COLORS.white
+  },
+  profileContainer: {
+    flexDirection: 'row',
+    marginTop: SIZES.radius,
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 50, 
+    height: 50
+  },
+  profileInfo: {
+    flexDirection: 'column', 
+    marginLeft: SIZES.radius
+  },
+  profileName: {
+    color: COLORS.white, 
+    ...FONTS.h3
+  },
+  profileAddress: {
+    color: COLORS.white, 
+    ...FONTS.body4
+  },
+  drawerList: {
+    flex: 1, 
+    marginTop: SIZES.padding
+  },
+  lineDevider: {
+    height: 1,
+    marginVertical: SIZES.radius,
+    marginLeft: SIZES.radius,
+    backgroundColor: COLORS.lightGray1,
+  },
+  logoutButton: {
+    marginTop: SIZES.base,
+    marginLeft: 5,
+  },
+  drawerStyle: {
+    flex: 1,
+    width: '65%',
+    padding: 20,
+    backgroundColor: 'transparent',
+  },
+  sceneContainerStyle: {
+    backgroundColor: 'transparent',
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer);

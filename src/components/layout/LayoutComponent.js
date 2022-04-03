@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
+import {View, Text, TouchableOpacity, Image, FlatList, StyleSheet} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -15,7 +15,7 @@ import {
   FONTS,
   images,
   icons,
-  dummyData,
+  data,
 } from 'constants';
 import {Header, TabButton} from 'components/common';
 import {setSelectedTab} from 'actions/tabActions';
@@ -182,59 +182,22 @@ const LayoutComponent = ({
   }, [selectedTab]);
 
   return (
-    <Animated.View
-      style={{
-        flex: 1,
-        backgroundColor: COLORS.white,
-        ...drawerAnimationStyle,
-      }}>
-      {/* Header */}
-      <Header
-        containerStyle={{
-          height: 70,
-          paddingHorizontal: SIZES.padding,
-          marginTop: 40,
-          alignItems: 'center',
-        }}
+    <Animated.View style={[styles.container, drawerAnimationStyle]}>
+      <Header 
+        containerStyle={styles.header}
         title={selectedTab.toUpperCase()}
         leftComponent={
-          <TouchableOpacity
-            style={{
-              width: 40,
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderWidth: 1,
-              borderColor: COLORS.gray2,
-              borderRadius: SIZES.radius,
-            }}
-            onPress={() => navigation.openDrawer()}>
+          <TouchableOpacity style={styles.leftComponent} onPress={() => navigation.openDrawer()}>
             <Image source={icons.menu} />
           </TouchableOpacity>
         }
         rightComponent={
-          <TouchableOpacity
-            style={{
-              width: 40,
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: SIZES.radius,
-              backgroundColor: COLORS.primary,
-            }}
-            onPress={() => navigation.openDrawer()}>
-            <Image
-              source={dummyData?.myProfile?.profile_image}
-              style={{height: 25, width: 25}}
-            />
+          <TouchableOpacity style={styles.rightComponent} onPress={() => navigation.openDrawer()}>
+            <Image source={data?.myProfile?.profile_image} style={styles.rightImage}/>
           </TouchableOpacity>
         }
       />
 
-      {/* Conetent */}
-      <View style={{flex: 1}}>
-        <Text>MainLayout</Text>
-      </View>
       <FlatList
         ref={flatlistRef}
         horizontal
@@ -259,34 +222,15 @@ const LayoutComponent = ({
       />
 
       {/* Footer */}
-      <View style={{height: 100, justifyContent: 'flex-end'}}>
+      <View style={styles.footerComponent}>
         <LinearGradient
           colors={[COLORS.transparent, COLORS.lightGray1]}
           start={{x: 0, y: 0}}
           end={{x: 0, y: 4}}
-          style={{
-            position: 'absolute',
-            top: -40,
-            left: 0,
-            right: 0,
-            height: 100,
-            borderTopLeftRadius: 15,
-            borderTopRightRadius: 15,
-          }}
+          style={styles.linearGradient}
         />
         {/* Tabs */}
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            paddingHorizontal: SIZES.radius,
-            paddingBottom: 10,
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
-            borderBottomLeftRadius: 25,
-            backgroundColor: COLORS.white,
-          }}>
-          {/* Home */}
+        <View style={styles.tabComponent}>
           <TabButton
             label={constants?.screens?.home}
             icon={icons.home}
@@ -296,7 +240,6 @@ const LayoutComponent = ({
             onPress={() => setSelectedTab(constants.screens.home)}
           />
 
-          {/* Search */}
           <TabButton
             label={constants?.screens?.search}
             icon={icons.search}
@@ -306,7 +249,6 @@ const LayoutComponent = ({
             onPress={() => setSelectedTab(constants.screens.search)}
           />
 
-          {/* Cart */}
           <TabButton
             label={constants?.screens?.cart}
             icon={icons.cart}
@@ -316,7 +258,6 @@ const LayoutComponent = ({
             onPress={() => setSelectedTab(constants.screens.cart)}
           />
 
-          {/* Favourite */}
           <TabButton
             label={constants?.screens?.favourite}
             icon={icons.favourite}
@@ -326,7 +267,6 @@ const LayoutComponent = ({
             onPress={() => setSelectedTab(constants.screens.favourite)}
           />
 
-          {/* Notification */}
           <TabButton
             label={constants?.screens?.notification}
             icon={icons.notification}
@@ -354,5 +294,62 @@ const mapDispatchToProps = dispatch => {
     },
   };
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
+  header: {
+    height: 70,
+    paddingHorizontal: SIZES.padding,
+    marginTop: 40,
+    alignItems: 'center',
+  },
+  leftComponent: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: COLORS.gray2,
+    borderRadius: SIZES.radius,
+  },
+  rightComponent: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.primary,
+  },
+  rightImage: {
+    height: 25, 
+    width: 25
+  },
+  footerComponent: {
+    height: 100, 
+    justifyContent: 'flex-end'
+  },
+  linearGradient: {
+    position: 'absolute',
+    top: -40,
+    left: 0,
+    right: 0,
+    height: 100,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+  },
+  tabComponent: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingHorizontal: SIZES.radius,
+    paddingBottom: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomLeftRadius: 25,
+    backgroundColor: COLORS.white,
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutComponent);

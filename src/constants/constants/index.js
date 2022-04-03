@@ -1,3 +1,5 @@
+import icons from '../icons';
+
 const onboarding_screens = [
   {
     id: 1,
@@ -38,22 +40,27 @@ const screens = {
 const bottom_tabs = [
   {
     id: 0,
+    icon: icons.home,
     label: screens.home,
   },
   {
     id: 1,
+    icon: icons.search,
     label: screens.search,
   },
   {
     id: 2,
+    icon: icons.cart,
     label: screens.cart,
   },
   {
     id: 3,
+    icon: icons.favourite,
     label: screens.favourite,
   },
   {
     id: 4,
+    icon: icons.notification,
     label: screens.notification,
   },
 ];

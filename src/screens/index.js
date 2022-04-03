@@ -1,48 +1,48 @@
 // Home
-import HomeScreen from './Home/HomeScreen';
+import HomeScreen from './home/HomeScreen';
 
 // Search
-import SearchScreen from './Search/SearchScreen';
+import SearchScreen from './search/SearchScreen';
 
 // Cart
-import CartTabScreen from './Cart/CartTabScreen';
+import CartTabScreen from './cart/CartTabScreen';
 
 // Favourite
-import FavouriteScreen from './Favourite/FavouriteScreen';
+import FavouriteScreen from './favourite/FavouriteScreen';
 
 // Notification
-import NotificationScreen from './Notification/NotificationScreen';
+import NotificationScreen from './notification/NotificationScreen';
 
 // Onboarding
-import OnboardingScreen from './Onboarding/OnboardingScreen';
+import OnboardingScreen from './onboarding/OnboardingScreen';
 
 // Sign in
-import SignInScreen from './Authentication/SignInScreen';
+import SignInScreen from './authentication/SignInScreen';
 
 // Sign up
-import SignUpScreen from './Authentication/SignUpScreen';
+import SignUpScreen from './authentication/SignUpScreen';
 
 // forgot password
-import ForgotPasswordScreen from './Authentication/ForgotPasswordScreen';
+import ForgotPasswordScreen from './authentication/ForgotPasswordScreen';
 
 // OTP
-import OtpScreen from './Authentication/OtpScreen';
+import OtpScreen from './authentication/OtpScreen';
 
 // Food
-import FoodDetailScreen from './Food/FoodDetailScreen';
+import FoodDetailScreen from './food/FoodDetailScreen';
 
 // Cart
-import CheckoutScreen from './Cart/CheckoutScreen';
-import MyCartScreen from './Cart/MyCartScreen';
-import SuccessScreen from './Cart/SuccessScreen';
+import CheckoutScreen from './cart/CheckoutScreen';
+import MyCartScreen from './cart/MyCartScreen';
+import SuccessScreen from './cart/SuccessScreen';
 
 // Card
-import AddCardScreen from './Card/AddCardScreen';
-import MyCardScreen from './Card/MyCardScreen';
+import AddCardScreen from './card/AddCardScreen';
+import MyCardScreen from './card/MyCardScreen';
 
 // Delivery
-import DeliveryStatusScreen from './Delivery/DeliveryStatusScreen';
-import MapScreen from './Delivery/MapScreen';
+import DeliveryStatusScreen from './delivery/DeliveryStatusScreen';
+import MapScreen from './delivery/MapScreen';
 
 export {
   HomeScreen,

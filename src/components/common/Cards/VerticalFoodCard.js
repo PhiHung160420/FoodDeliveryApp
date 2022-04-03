@@ -4,11 +4,7 @@ import {COLORS, FONTS, icons, SIZES} from '../../../constants';
 
 const VerticalFoodCard = ({containerStyle, item, onPress}) => {
   return (
-    <TouchableOpacity
-      style={{
-        ...styles.container,
-        ...containerStyle,
-      }}>
+    <TouchableOpacity style={[styles.container, containerStyle]} onPress={onPress}>
       {/* Calories - favourite */}
       <View style={styles.caloriesContainer}>
         {/* Calories */}
@@ -35,7 +31,7 @@ const VerticalFoodCard = ({containerStyle, item, onPress}) => {
       {/* Info */}
       <View style={styles.infoContainer}>
         <Text style={{...FONTS.h3}}>{item.name}</Text>
-        <Text style={styles.infoText}>{item.description}</Text>
+        <Text style={styles.infoText}>{item.title}</Text>
         <Text style={{...FONTS.h2}}>$ {item.price}</Text>
       </View>
     </TouchableOpacity>
@@ -47,10 +43,21 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lightGray2,
     borderRadius: SIZES.radius,
   },
-  caloriesContainer: {flexDirection: 'row'},
-  calories: {flex: 1, flexDirection: 'row'},
-  caloriesIcon: {width: 30, height: 30},
-  caloriesText: {color: COLORS.darkGray2, ...FONTS.body5},
+  caloriesContainer: {
+    flexDirection: 'row'
+  },
+  calories: {
+    flex: 1, 
+    flexDirection: 'row'
+  },
+  caloriesIcon: {
+    width: 30, 
+    height: 30
+  },
+  caloriesText: {
+    color: COLORS.darkGray2, 
+    ...FONTS.body5
+  },
   favorite: {
     width: 20,
     height: 20,
@@ -61,8 +68,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  image: {height: '100%', width: '100%'},
-  infoContainer: {alignItems: 'center', marginTop: -20},
+  image: {
+    height: '100%', 
+    width: '100%'
+  },
+  infoContainer: {
+    alignItems: 'center', 
+    marginTop: -20
+  },
   infoText: {
     color: COLORS.darkGray2,
     textAlign: 'center',

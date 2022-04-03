@@ -1,48 +1,60 @@
 import React from 'react';
-import {TouchableOpacity, View, Image, Text} from 'react-native';
+import {TouchableOpacity, View, Image, Text, StyleSheet} from 'react-native';
 import {COLORS, FONTS, icons, SIZES} from '../../../constants';
 
 const HorizontalFoodCard = ({containerStyle, imageStype, item, onPress}) => {
   return (
-    <TouchableOpacity
-      style={{
-        flexDirection: 'row',
-        borderRadius: SIZES.radius,
-        backgroundColor: COLORS.lightGray2,
-        ...containerStyle,
-      }}>
-      {/* Image */}
+    <TouchableOpacity style={[styles.container, containerStyle]} onPress={onPress}>
       <Image source={item.image} style={imageStype} />
 
-      {/* Info */}
       <View style={{flex: 1}}>
-        {/* Name */}
-        <Text style={{...FONTS.h3, fontSize: 17}}>{item.name}</Text>
+        <Text style={styles.name}>{item.name}</Text>
 
-        {/* Description */}
-        <Text style={{...FONTS.body4, color: COLORS.darkGray2}}>
-          {item.description}
-        </Text>
+        <Text style={styles.description}>{item.title}</Text>
 
-        {/* Price */}
-        <Text style={{marginTop: SIZES.base, ...FONTS.h2}}>{item.price}</Text>
+        <Text style={styles.price}>{item.price}</Text>
       </View>
 
-      {/* calories */}
-      <View
-        style={{
-          flexDirection: 'row',
-          position: 'absolute',
-          top: 5,
-          right: SIZES.radius,
-        }}>
-        <Image source={icons.calories} style={{width: 30, height: 30}} />
-        <Text style={{color: COLORS.darkGray2, ...FONTS.body5}}>
-          {item.calories} Calories
-        </Text>
+      <View style={styles.calories}>
+        <Image source={icons.calories} style={styles.icon} />
+        <Text style={styles.text}>{item.calories} Calories</Text>
       </View>
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.lightGray2,
+  },
+  name: {
+    ...FONTS.h3, 
+    fontSize: 17
+  },
+  description: {
+    ...FONTS.body4, 
+    color: COLORS.darkGray2
+  },
+  price: {
+    marginTop: SIZES.base, 
+    ...FONTS.h2
+  },
+  calories: {
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 5,
+    right: SIZES.radius,
+  },
+  icon: {
+    width: 30, 
+    height: 30
+  },
+  text: {
+    color: COLORS.darkGray2, 
+    ...FONTS.body5
+  }
+});
 
 export default HorizontalFoodCard;

@@ -1,4 +1,4 @@
-import SIZES from './sizes';
+import SIZES from '../sizes';
 
 const FONTS = {
   largeTitle: {fontFamily: 'Poppins-Black', fontSize: SIZES.largeTitle},

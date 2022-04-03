@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Text, View, StyleSheet} from 'react-native';
-import {COLORS, constants, FONTS, icons, images, SIZES} from '../../constants';
+import {COLORS, constants, FONTS, icons, images, SIZES} from '../../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const AuthLayout = ({title, subTitle, titleContainerStyle, children}) => {
@@ -35,11 +35,24 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.padding * 3,
     backgroundColor: COLORS.white,
   },
-  authLayout: {flex: 1, paddingHorizontal: SIZES.padding},
-  iconContainer: {alignItems: 'center'},
-  icon: {height: 100, width: 200},
-  contentContainer: {marginTop: SIZES.padding},
-  title: {textAlign: 'center', ...FONTS.h2},
+  authLayout: {
+    flex: 1, 
+    paddingHorizontal: SIZES.padding
+  },
+  iconContainer: {
+    alignItems: 'center'
+  },
+  icon: {
+    height: 100, 
+    width: 200
+  },
+  contentContainer: {
+    marginTop: SIZES.padding
+  },
+  title: {
+    textAlign: 'center', 
+    ...FONTS.h2
+  },
   subTitle: {
     textAlign: 'center',
     color: COLORS.darkGray,
