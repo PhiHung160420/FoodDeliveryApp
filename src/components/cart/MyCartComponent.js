@@ -11,12 +11,16 @@ import {
 } from 'components/common';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import { useNavigation } from '@react-navigation/native';
+import {connect} from 'react-redux';
+import {setSelectedTab} from 'actions/tabActions';
 
-const MyCartComponent = ({mycartList, updateQuantityHandler, removeMycartList}) => {
+const MyCartComponent = (props) => {
+  const {mycartList, updateQuantityHandler, removeMycartList, selectedTab, setSelectedTab} = props;
   const navigation = useNavigation();
-  
-  const renderHeader = () => {
-    return (
+
+  return (
+    <View style={styles.container}>
+      {selectedTab !== 'Cart' ? 
       <Header
         title="MY CART"
         containerStyle={styles.headerContainer}
@@ -25,16 +29,14 @@ const MyCartComponent = ({mycartList, updateQuantityHandler, removeMycartList}) 
             icon={icons.back}
             iconStyle={styles.iconBack}
             buttonContainerStyle={styles.btnBack}
-            onPress={() => navigation.goBack()}
+            onPress={() => {
+              navigation.goBack();
+            }}
           />
         }
         rightComponent={<CartQuantityButton quantity={2} />}
-      />
-    );
-  };
+      /> : null}
 
-  const renderCartList = () => {
-    return (
       <SwipeListView
         data={mycartList}
         keyExtractor={item => `${item.id}`}
@@ -78,27 +80,39 @@ const MyCartComponent = ({mycartList, updateQuantityHandler, removeMycartList}) 
         )}
         leftOpenValue={75}
       />
-    );
-  };
-  
-  const renderFooter = () => (
-    <FooterTotal
-      subTotal={37.97}
-      shippingCost={0.0}
-      total={37.97}
-      onPress={() => navigation.navigate(screenNames.MyCard)}
-    />
-  );
 
-  return (
-    <View style={styles.container}>
-      {renderHeader()}
-
-      {renderCartList()}
-
-      {renderFooter()}
+      {selectedTab !== 'Cart' ? 
+      <FooterTotal
+        subTotal={37.97}
+        shippingCost={0.0}
+        total={37.97}
+        onPress={() => navigation.navigate(screenNames.MyCard)}
+      /> : 
+      <TextButton 
+        label="Go To My Cart"
+        labelStyle={styles.goToMyCartLabel}
+        buttonContainerStyle={styles.goToCartButton}
+        onPress={() => {
+          setSelectedTab('');
+          navigation.navigate('MyCart');
+        }}
+      />}
     </View>
   )
+};
+
+const mapStateToProps = state => {
+  return {
+    selectedTab: state.TabReducer.selectedTab,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedTab: selectedTab => {
+      return dispatch(setSelectedTab(selectedTab));
+    },
+  };
 };
 
 const styles = StyleSheet.create({
@@ -173,6 +187,18 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundColor: COLORS.primary,
   },
+  goToCartButton: {
+    height: 60,
+    marginBottom: 250,
+    backgroundColor: COLORS.primary,
+    borderRadius: SIZES.radius,
+    marginHorizontal: SIZES.padding
+  },
+  goToMyCartLabel: {
+    color: COLORS.white, 
+    ...FONTS.h3,
+    fontSize: 20,
+  }
 });
 
-export default MyCartComponent;
+export default connect(mapStateToProps, mapDispatchToProps)(MyCartComponent);

@@ -14,6 +14,7 @@ import {
   MyCardScreen,
   DeliveryStatusScreen,
   MapScreen,
+  OrderHistoryScreen
 } from 'screens';
 import CustomDrawer from '../drawer/CustomDrawer';
 
@@ -21,7 +22,7 @@ const Stack = createStackNavigator();
 
 export const RootStack = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={'MyCard'}>
+    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={'Home'}>
       <Stack.Screen name="Home" component={CustomDrawer} />
 
       <Stack.Screen name="Onboarding" component={OnboardingScreen} /> 
@@ -40,23 +41,17 @@ export const RootStack = () => {
 
       <Stack.Screen name="MyCart" component={MyCartScreen} />
 
-      <Stack.Screen
-        name="Success"
-        component={SuccessScreen}
-        options={{gestureEnabled: false}}
-      />
+      <Stack.Screen name="Success" component={SuccessScreen} options={{gestureEnabled: false}} />
 
       <Stack.Screen name="AddCard" component={AddCardScreen} />
 
       <Stack.Screen name="MyCard" component={MyCardScreen} />
 
-      <Stack.Screen
-        name="DeliveryStatus"
-        component={DeliveryStatusScreen}
-        options={{gestureEnabled: false}}
-      />
+      <Stack.Screen name="DeliveryStatus" component={DeliveryStatusScreen} options={{gestureEnabled: false}}/>
 
       <Stack.Screen name="Map" component={MapScreen} />
+
+      <Stack.Screen name="OrderHistory" component={OrderHistoryScreen} />
     </Stack.Navigator>
   );
 };

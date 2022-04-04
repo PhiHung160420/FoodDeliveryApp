@@ -20,6 +20,8 @@ import AuthLayout from './sections/AuthLayout';
 import SearchInput from './Inputs/SearchInput';
 import TextIconButton from './Buttons/TextIconButton';
 import PaymentCard from './Cards/PaymentCard';
+import NotificationCard from './Cards/NotificationCard';
+import OrderCard from './Cards/OrderCard';
 
 export {
   Header,
@@ -43,5 +45,7 @@ export {
   AuthLayout,
   SearchInput,
   TextIconButton,
-  PaymentCard
+  PaymentCard,
+  NotificationCard,
+  OrderCard
 };

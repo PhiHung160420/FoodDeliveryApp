@@ -11,9 +11,12 @@ import {
   Rating,
   StepperInput,
 } from 'components/common';
+import { useNavigation } from '@react-navigation/native';
 
 const FoodDetailComponent = (props) => {
-  const {foodItemm, selectedSize, quantity, setQuantity, setSelectedSize} = props;
+  const navigation = useNavigation();
+  
+  const {foodItem, selectedSize, quantity, setQuantity, setSelectedSize} = props;
   
   const renderHeader = () => (
     <Header

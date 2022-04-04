@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { FoodDetailComponent } from '../../components';
 
-const FoodDetailScreen = ({navigation, route}) => {
+const FoodDetailScreen = ({route}) => {
   const foodItem = route?.params;
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);

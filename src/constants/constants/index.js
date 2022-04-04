@@ -65,6 +65,17 @@ const bottom_tabs = [
   },
 ];
 
+const order_history_tabs = [
+  {
+    id: 0,
+    name: 'History'
+  },
+  {
+    id: 1,
+    name: 'Upcoming'
+  }
+]
+
 const delivery_time = [
   {
     id: 1,
@@ -176,5 +187,6 @@ export default {
   ratings,
   tags,
   track_order_status,
+  order_history_tabs,
   GOOGLE_MAP_API_KEY,
 };

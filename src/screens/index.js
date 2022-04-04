@@ -4,9 +4,6 @@ import HomeScreen from './home/HomeScreen';
 // Search
 import SearchScreen from './search/SearchScreen';
 
-// Cart
-import CartTabScreen from './cart/CartTabScreen';
-
 // Favourite
 import FavouriteScreen from './favourite/FavouriteScreen';
 
@@ -44,10 +41,12 @@ import MyCardScreen from './card/MyCardScreen';
 import DeliveryStatusScreen from './delivery/DeliveryStatusScreen';
 import MapScreen from './delivery/MapScreen';
 
+// order history
+import OrderHistoryScreen from './order/OrderHistoryScreen';
+
 export {
   HomeScreen,
   SearchScreen,
-  CartTabScreen,
   FavouriteScreen,
   NotificationScreen,
   OnboardingScreen,
@@ -63,4 +62,5 @@ export {
   MyCardScreen,
   DeliveryStatusScreen,
   MapScreen,
+  OrderHistoryScreen
 };

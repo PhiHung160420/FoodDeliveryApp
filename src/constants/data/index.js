@@ -210,6 +210,167 @@ const sizes = [
   },
 ];
 
+const notifications = [
+  {
+      id: 0,
+      title: "Today",
+      data: [
+          {
+              id: 1,
+              avatar: images.logo_01,
+              name: "Admin",
+              created_at: "a few seconds ago",
+              message: "Buy 1 get 1 free for small sizes"
+          },
+          {
+              id: 2,
+              avatar: images.logo_01,
+              name: "Admin",
+              created_at: "1 hour ago",
+              message: "Your 50% discount code is: ON50DIS. Apply on checkout."
+          },
+          {
+              id: 3,
+              avatar: images.logo_01,
+              name: "Admin",
+              created_at: "5 days ago",
+              message: "Buy 1 get 1 free for small sizes"
+          }
+      ],
+  },
+  {
+      id: 1,
+      title: "Yesterday",
+      data: [
+          {
+              id: 4,
+              avatar: images.logo_01,
+              name: "Admin",
+              created_at: "1 day ago",
+              message: "You just signed in from another device check inbox for more details."
+          },
+          {
+              id: 5,
+              avatar: images.logo_01,
+              name: "Admin",
+              created_at: "1 day ago",
+              message: "Your 50% discount code is: ON50DIS. Apply on checkout."
+          },
+      ],
+  },
+];
+
+const orders_history = [
+  {
+    id: 0,
+    title: '19 sep 2022',
+    data: [
+      {
+        id: 0,
+        avatar: icons.pizza_hut,
+        name: 'Pizza Hut',
+        date_time: '19 sep, 14: 30',
+        items: 3,
+        status: 'Delivered',
+        totalPrice: 35.30
+      },
+      {
+        id: 1,
+        avatar: icons.kfc,
+        name: 'KFC',
+        date_time: '19 sep, 12: 30',
+        items: 4,
+        status: 'Delivered',
+        totalPrice: 55.00
+      },
+      {
+        id: 2,
+        avatar: icons.dominos,
+        name: 'Domino\'s Pizza',
+        date_time: '19 sep, 10: 30',
+        items: 1,
+        status: 'Cancel',
+        totalPrice: 15.50
+      }
+    ]
+  },
+  {
+    id: 1,
+    title: '15 sep 2022',
+    data: [
+      {
+        id: 0,
+        avatar: icons.starbucks,
+        name: 'Pizza Hut',
+        date_time: '15 sep, 14: 30',
+        items: 3,
+        status: 'Delivered',
+        totalPrice: 40.00
+      },
+      {
+        id: 1,
+        avatar: icons.burger_king,
+        name: 'KFC',
+        date_time: '15 sep, 12: 30',
+        items: 2,
+        status: 'Cancel',
+        totalPrice: 20.30
+      },
+    ]
+  }
+];
+
+const orders_upcoming = [
+  {
+    id: 0,
+    title: 'Orders In Progress',
+    data: [
+      {
+        id: 0,
+        avatar: icons.starbucks,
+        name: 'Starbucks',
+        date_time: '27 sep, 12: 30',
+        items: 3,
+        status: 'InProgress',
+        order_code: '#88888'
+      },
+      {
+        id: 1,
+        avatar: icons.mcdonalds,
+        name: 'McDonalds',
+        date_time: '27 sep, 20: 30',
+        items: 4,
+        status: 'InProgress',
+        order_code: '#88887'
+      }
+    ]
+  },
+  {
+    id: 1,
+    title: 'Lastest Orders',
+    data: [
+      {
+        id: 0,
+        avatar: icons.starbucks,
+        name: 'Pizza Hut',
+        date_time: '27 sep, 14: 30',
+        items: 3,
+        status: 'Delivered',
+        totalPrice: 40.45
+      },
+      {
+        id: 1,
+        avatar: icons.burger_king,
+        name: 'KFC',
+        date_time: '27 sep, 12: 30',
+        items: 2,
+        status: 'Delivered',
+        totalPrice: 20.35
+      },
+    ]
+  }
+];
+
 export default {
   myProfile,
   categories,
@@ -220,4 +381,7 @@ export default {
   fromLocs,
   allCards,
   myCards,
+  notifications,
+  orders_history,
+  orders_upcoming
 };

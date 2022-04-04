@@ -11,6 +11,9 @@ import AddCardComponent from './card/AddCardComponent';
 import MyCardComponent from './card/MyCardComponent';
 import CheckoutComponent from './checkout/CheckoutComponent';
 import SuccessComponent from './checkout/SuccessComponent';
+import DeliveryStatusComponent from './delivery/DeliveryStatusComponent';
+import NotificationComponent from './notification/NotificationComponent';
+import OrderHistoryComponent from './order/OrderHistoryComponent';
 
 export {
   LayoutComponent,
@@ -25,5 +28,8 @@ export {
   AddCardComponent,
   MyCardComponent,
   CheckoutComponent,
-  SuccessComponent
+  SuccessComponent,
+  DeliveryStatusComponent,
+  NotificationComponent,
+  OrderHistoryComponent
 }

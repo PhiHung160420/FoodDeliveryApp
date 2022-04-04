@@ -7,7 +7,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from 'react-redux';
-import {HomeScreen, SearchScreen, CartTabScreen, FavouriteScreen, NotificationScreen} from 'screens';
+import {HomeScreen, SearchScreen, MyCartScreen, FavouriteScreen, NotificationScreen} from 'screens';
 import {
   constants,
   COLORS,
@@ -213,9 +213,9 @@ const LayoutComponent = ({
             <View style={{height: SIZES.height, width: SIZES.width}}>
               {item.label == constants.screens.home && <HomeScreen />}
               {item.label == constants.screens.search && <SearchScreen />}
-              {item.label == constants.screens.cart && <CartTabScreen />}
+              {item.label == constants.screens.cart && <MyCartScreen />}
               {item.label == constants.screens.favourite && <FavouriteScreen />}
-              {item.label == constants.screens.Notification && <NotificationScreen />}
+              {item.label == constants.screens.notification && <NotificationScreen />}
             </View>
           );
         }}
@@ -273,7 +273,7 @@ const LayoutComponent = ({
             outerContainerStyle={notificationFlexStyle}
             innerContainerStyle={notificationColorStyle}
             isFocused={selectedTab == constants?.screens?.notification}
-            onPress={() => setSelectedTab(constants.screens.notification)}
+            onPress={() => setSelectedTab(constants?.screens?.notification)}
           />
         </View>
       </View>

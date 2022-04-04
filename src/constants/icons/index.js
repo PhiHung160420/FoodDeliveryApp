@@ -49,6 +49,14 @@ const call = require('assets/icons/call.png');
 const location_pin = require('assets/icons/location_pin.png');
 const navigator = require('assets/icons/navigator.png');
 const navigator1 = require('assets/icons/navigator1.png');
+const more = require('assets/icons/more.png');
+const order_history = require('assets/icons/order-history.png');
+const pizza_hut = require('assets/icons/pizza-hut.png');
+const starbucks = require('assets/icons/starbucks.png');
+const burger_king = require('assets/icons/burger-king.png');
+const dominos = require('assets/icons/dominos.png');
+const mcdonalds = require('assets/icons/mcdonalds.png');
+const kfc = require('assets/icons/kfc.png');
 
 export default {
   apple,
@@ -102,4 +110,12 @@ export default {
   location_pin,
   navigator,
   navigator1,
+  more,
+  order_history,
+  pizza_hut,
+  starbucks,
+  burger_king,
+  dominos,
+  mcdonalds,
+  kfc
 };
