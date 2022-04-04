@@ -41,8 +41,11 @@ import MyCardScreen from './card/MyCardScreen';
 import DeliveryStatusScreen from './delivery/DeliveryStatusScreen';
 import MapScreen from './delivery/MapScreen';
 
-// order history
+// Order History
 import OrderHistoryScreen from './order/OrderHistoryScreen';
+
+// Setting
+import SettingScreen from './setting/SettingScreen';
 
 export {
   HomeScreen,
@@ -62,5 +65,6 @@ export {
   MyCardScreen,
   DeliveryStatusScreen,
   MapScreen,
-  OrderHistoryScreen
+  OrderHistoryScreen,
+  SettingScreen
 };

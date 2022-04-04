@@ -81,7 +81,7 @@ const CustomDrawerContent = ({
           <CustomDrawerItem label="Track Your Order" icon={icons.location} />
           <CustomDrawerItem label="Order History" icon={icons.order_history} onPress={() => navigation.navigate('OrderHistory')}/>
           <CustomDrawerItem label="Coupons" icon={icons.coupon} />
-          <CustomDrawerItem label="Settings" icon={icons.setting} />
+          <CustomDrawerItem label="Settings" icon={icons.setting} onPress={() => navigation.navigate('Setting')}/>
           <CustomDrawerItem label="Invite a Friend" icon={icons.profile} />
         </View>
 

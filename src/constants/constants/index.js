@@ -177,6 +177,59 @@ const track_order_status = [
   },
 ];
 
+const settings = [
+  {
+    id: 0,
+    icon: icons.lock,
+    title: 'Change Password',
+  },
+  {
+    id: 1,
+    icon: icons.preferences,
+    title: 'Preferences',
+  },
+  {
+    id: 2,
+    icon: icons.notification,
+    title: 'Notifications',
+  },
+  {
+    id: 3,
+    icon: icons.data,
+    title: 'Date use',
+  },
+  {
+    id: 4,
+    icon: icons.language,
+    title: 'Language',
+  },
+  {
+    id: 5,
+    icon: icons.again,
+    title: 'Check updates',
+  },
+  {
+    id: 6,
+    icon: icons.phone,
+    title: 'Contact Us',
+  },
+  {
+    id: 7,
+    icon: icons.privacy,
+    title: 'Privacy Policy',
+  },
+  {
+    id: 8,
+    icon: icons.terms,
+    title: 'Term & Conditions',
+  },
+  {
+    id: 9,
+    icon: icons.logout,
+    title: 'Logout',
+  },
+]
+
 const GOOGLE_MAP_API_KEY = '';
 
 export default {
@@ -189,4 +242,5 @@ export default {
   track_order_status,
   order_history_tabs,
   GOOGLE_MAP_API_KEY,
+  settings
 };

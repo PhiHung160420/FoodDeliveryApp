@@ -14,7 +14,8 @@ import {
   MyCardScreen,
   DeliveryStatusScreen,
   MapScreen,
-  OrderHistoryScreen
+  OrderHistoryScreen,
+  SettingScreen
 } from 'screens';
 import CustomDrawer from '../drawer/CustomDrawer';
 
@@ -52,6 +53,8 @@ export const RootStack = () => {
       <Stack.Screen name="Map" component={MapScreen} />
 
       <Stack.Screen name="OrderHistory" component={OrderHistoryScreen} />
+
+      <Stack.Screen name="Setting" component={SettingScreen} />
     </Stack.Navigator>
   );
 };

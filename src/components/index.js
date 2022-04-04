@@ -14,6 +14,7 @@ import SuccessComponent from './checkout/SuccessComponent';
 import DeliveryStatusComponent from './delivery/DeliveryStatusComponent';
 import NotificationComponent from './notification/NotificationComponent';
 import OrderHistoryComponent from './order/OrderHistoryComponent';
+import SettingComponent from './setting/SettingComponent';
 
 export {
   LayoutComponent,
@@ -31,5 +32,6 @@ export {
   SuccessComponent,
   DeliveryStatusComponent,
   NotificationComponent,
-  OrderHistoryComponent
+  OrderHistoryComponent,
+  SettingComponent
 }

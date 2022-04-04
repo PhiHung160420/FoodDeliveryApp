@@ -57,6 +57,14 @@ const burger_king = require('assets/icons/burger-king.png');
 const dominos = require('assets/icons/dominos.png');
 const mcdonalds = require('assets/icons/mcdonalds.png');
 const kfc = require('assets/icons/kfc.png');
+const preferences = require('assets/icons/filter.png');
+const lock = require('assets/icons/padlock.png');
+const data = require('assets/icons/analysis.png');
+const language = require('assets/icons/language.png');
+const again = require('assets/icons/return.png');
+const phone = require('assets/icons/phone-call.png');
+const privacy = require('assets/icons/compliant.png');
+const terms = require('assets/icons/accept.png');
 
 export default {
   apple,
@@ -117,5 +125,13 @@ export default {
   burger_king,
   dominos,
   mcdonalds,
-  kfc
+  kfc,
+  preferences,
+  lock,
+  data,
+  language,
+  again,
+  phone,
+  privacy,
+  terms
 };
