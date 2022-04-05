@@ -8,6 +8,7 @@ const logo_01 = require('assets/images/logo_01.png');
 const logo_02 = require('assets/images/logo_02.png');
 const profile = require('assets/images/profile.png');
 const success = require('assets/images/success.png');
+const delivery_man = require('assets/images/delivery_man.png');
 
 export default {
   background_01,
@@ -20,4 +21,5 @@ export default {
   logo_02,
   profile,
   success,
+  delivery_man
 };

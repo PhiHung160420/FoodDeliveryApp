@@ -230,7 +230,7 @@ const settings = [
   },
 ]
 
-const GOOGLE_MAP_API_KEY = '';
+const GOOGLE_MAP_API_KEY = 'AIzaSyDMDoEMJa9aJ6BO7igf_O021ydHcuJftrI';
 
 export default {
   onboarding_screens,

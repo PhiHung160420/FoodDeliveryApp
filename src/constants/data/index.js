@@ -170,8 +170,8 @@ const fromLocs = [
     longitude: 110.35632207358996,
   },
   {
-    latitude: 1.556306570595712,
-    longitude: 110.35504616746915,
+    latitude: 10.753353,
+    longitude: 106.661198,
   },
   {
     latitude: 1.5238753474714375,

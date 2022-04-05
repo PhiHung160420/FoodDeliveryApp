@@ -15,6 +15,7 @@ import DeliveryStatusComponent from './delivery/DeliveryStatusComponent';
 import NotificationComponent from './notification/NotificationComponent';
 import OrderHistoryComponent from './order/OrderHistoryComponent';
 import SettingComponent from './setting/SettingComponent';
+import MapComponent from './map/MapComponent';
 
 export {
   LayoutComponent,
@@ -33,5 +34,6 @@ export {
   DeliveryStatusComponent,
   NotificationComponent,
   OrderHistoryComponent,
-  SettingComponent
+  SettingComponent,
+  MapComponent
 }

@@ -39,7 +39,7 @@ import MyCardScreen from './card/MyCardScreen';
 
 // Delivery
 import DeliveryStatusScreen from './delivery/DeliveryStatusScreen';
-import MapScreen from './delivery/MapScreen';
+import MapScreen from './map/MapScreen';
 
 // Order History
 import OrderHistoryScreen from './order/OrderHistoryScreen';
