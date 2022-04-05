@@ -4,43 +4,43 @@ The challenge (for learning purpose) was to develop Food Delivery App using Reac
 
 <p align="center" >
   <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/1.png" title="Home Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/1.png" title="Home Screen" width="250">
   </kbd>
   <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/2.png" title="Search Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/2.png" title="Search Screen" width="250">
   </kbd>
   <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/3.png" title="Profile Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/3.png" title="Profile Screen" width="250">
   </kbd>
   <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/4.png" title="List Course Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/4.png" title="List Course Screen" width="250">
   </kbd>
   <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/5.png" title="Filter Modal" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/5.png" title="Filter Modal" width="250">
   </kbd>
    <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/6.png" title="Course Detail Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/6.png" title="Course Detail Screen" width="250">
   </kbd>
    <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/9.png" title="Discussions Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/9.png" title="Discussions Screen" width="250">
   </kbd>
    <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/7.png" title="Instructor Profile Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/7.png" title="Instructor Profile Screen" width="250">
   </kbd>
    <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/10.png" title="Notifications Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/10.png" title="Notifications Screen" width="250">
   </kbd>
   <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/11.png" title="Landing Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/11.png" title="Landing Screen" width="250">
   </kbd>
    <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/12.png" title="Register Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/12.png" title="Register Screen" width="250">
   </kbd>
    <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/13.png" title="Login Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/13.png" title="Login Screen" width="250">
   </kbd>
    <kbd>
-    <img src="https://github.com/PhiHung160420/learning-online-app/blob/master/assets/screenshots/14.png" title="Login Screen" width="250">
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/14.png" title="Login Screen" width="250">
   </kbd>
   <br>
   <em>Some Screen Learning Online App Project</em>
