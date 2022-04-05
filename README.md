@@ -42,6 +42,9 @@ The challenge (for learning purpose) was to develop Food Delivery App using Reac
    <kbd>
     <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/14.png" title="Login Screen" width="250">
   </kbd>
+  <kbd>
+    <img src="https://github.com/PhiHung160420/FoodDeliveryApp/blob/master/assets/screenshots/15.png" title="Login Screen" width="250">
+  </kbd>
   <br>
   <em>Some Screen Learning Online App Project</em>
 </p>
