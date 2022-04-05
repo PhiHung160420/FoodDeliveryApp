@@ -218,21 +218,21 @@ const notifications = [
           {
               id: 1,
               avatar: images.logo_01,
-              name: "Admin",
+              name: "Eat Me",
               created_at: "a few seconds ago",
               message: "Buy 1 get 1 free for small sizes"
           },
           {
               id: 2,
               avatar: images.logo_01,
-              name: "Admin",
+              name: "Eat Me",
               created_at: "1 hour ago",
               message: "Your 50% discount code is: ON50DIS. Apply on checkout."
           },
           {
               id: 3,
               avatar: images.logo_01,
-              name: "Admin",
+              name: "Eat Me",
               created_at: "5 days ago",
               message: "Buy 1 get 1 free for small sizes"
           }
@@ -245,14 +245,14 @@ const notifications = [
           {
               id: 4,
               avatar: images.logo_01,
-              name: "Admin",
+              name: "Eat Me",
               created_at: "1 day ago",
               message: "You just signed in from another device check inbox for more details."
           },
           {
               id: 5,
               avatar: images.logo_01,
-              name: "Admin",
+              name: "Eat Me",
               created_at: "1 day ago",
               message: "Your 50% discount code is: ON50DIS. Apply on checkout."
           },
