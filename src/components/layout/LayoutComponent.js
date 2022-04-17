@@ -1,35 +1,34 @@
-import React, {useEffect, useRef} from 'react';
-import {View, Text, TouchableOpacity, Image, FlatList, StyleSheet} from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
-import LinearGradient from 'react-native-linear-gradient';
-import {connect} from 'react-redux';
-import {HomeScreen, SearchScreen, MyCartScreen, FavouriteScreen, NotificationScreen} from 'screens';
+import { useDrawerStatus } from '@react-navigation/drawer';
+import { setSelectedTab } from 'actions/tabActions';
+import { Header, TabButton } from 'components/common';
 import {
-  constants,
-  COLORS,
-  SIZES,
-  FONTS,
-  images,
-  icons,
-  data,
+  COLORS, constants, data, icons, SIZES
 } from 'constants';
-import {Header, TabButton} from 'components/common';
-import {setSelectedTab} from 'actions/tabActions';
+import React, { useEffect, useRef } from 'react';
+import { FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import Animated, {
+  Extrapolate,
+  interpolate, useAnimatedStyle,
+  useSharedValue,
+  withTiming
+} from 'react-native-reanimated';
+import { connect } from 'react-redux';
+import { FavouriteScreen, HomeScreen, MyCartScreen, NotificationScreen, SearchScreen } from 'screens';
 
 const LayoutComponent = ({
-  drawerAnimationStyle,
   selectedTab,
   setSelectedTab,
   navigation,
 }) => {
   const flatlistRef = useRef();
 
+  const isDrawerOpen = useDrawerStatus();
+  
+  const progress = useSharedValue(0);
+
   // Reanimated Shared Value
-  //home
+  // home
   const homeTabFlex = useSharedValue(1);
   const homeTabColor = useSharedValue(COLORS.white);
 
@@ -180,6 +179,26 @@ const LayoutComponent = ({
       notificationTabColor.value = withTiming(COLORS.white, {duration: 500});
     }
   }, [selectedTab]);
+
+  useEffect(() => {
+    if(isDrawerOpen == 'open') {
+      progress.value = withTiming(1);
+    } else {
+      progress.value = withTiming(0);
+    }
+  }, [isDrawerOpen]);
+
+  const drawerAnimationStyle = useAnimatedStyle(() => {
+    const scale = interpolate(progress.value, [0, 1], [1, 0.8], {
+      extrapolateRight: Extrapolate.CLAMP
+    });
+  
+    const borderRadius = interpolate(progress.value, [0, 1], [0, 25], {
+      extrapolateRight: Extrapolate.CLAMP
+    });
+
+    return {borderRadius, transform: [{ scale }]};
+  });
 
   return (
     <Animated.View style={[styles.container, drawerAnimationStyle]}>

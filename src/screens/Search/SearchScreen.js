@@ -3,9 +3,7 @@ import {Text, View} from 'react-native';
 
 const SearchScreen = () => {
   return (
-    <View>
-      <Text>SearchScreen</Text>
-    </View>
+    <View></View>
   );
 };
 

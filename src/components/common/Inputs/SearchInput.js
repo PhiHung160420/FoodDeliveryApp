@@ -15,7 +15,7 @@ const SearchInput = ({setShowFilterModal}) => {
       <Image source={icons.search} style={styles.iconSearch} />
 
       {/* Input */}
-      <TextInput style={styles.searchInput} placeholder="Search Food ..." />
+      <TextInput value='' style={styles.searchInput} placeholder="Search Food ..." />
 
       {/* Filter Button */}
       <TouchableOpacity onPress={setShowFilterModal}>

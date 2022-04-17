@@ -11,7 +11,6 @@ import {
 import {
   COLORS,
   constants,
-  dummyData,
   FONTS,
   icons,
   SIZES,

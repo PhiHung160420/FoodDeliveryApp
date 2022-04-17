@@ -1,5 +1,5 @@
 const formatCardNumber = (value) => {
-  return value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim()
+  return value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
 };
 
 const calculateAngle = (coordinates) => {

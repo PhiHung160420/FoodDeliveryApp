@@ -74,7 +74,7 @@ const DeliveryStatusComponent = ({currentStep}) => {
               buttonContainerStyle={styles.cancelButton}
               label="Cancel"
               labelStyle={{color: COLORS.primary}}
-              onPress={() => navigation.navigate('FooterDetail')}
+              onPress={() => navigation.navigate('Home')}
             />
 
             <TextButton

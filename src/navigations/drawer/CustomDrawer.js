@@ -1,15 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Image, Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import {
   createDrawerNavigator,
-  DrawerContentScrollView,
-  useDrawerProgress,
+  DrawerContentScrollView
 } from '@react-navigation/drawer';
-import {LayoutComponent} from 'components';
-import {constants, COLORS, SIZES, FONTS, icons, data, screenNames} from 'constants';
-import Animated, {interpolateNode} from 'react-native-reanimated';
-import {connect} from 'react-redux';
-import {setSelectedTab} from 'actions/tabActions';
+import { setSelectedTab } from 'actions/tabActions';
+import { LayoutComponent } from 'components';
+import { COLORS, constants, data, FONTS, icons, screenNames, SIZES } from 'constants';
+import React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 
 const Drawer = createDrawerNavigator();
 
@@ -27,15 +25,9 @@ const CustomDrawerItem = ({label, icon, onPress, isFocused}) => {
 
 const CustomDrawerContent = ({
   navigation,
-  setProgress,
   selectedTab,
   setSelectedTab,
 }) => {
-  const progress = useDrawerProgress();
-
-  useEffect(() => {
-    setProgress(progress);
-  }, [progress]);
 
   return (
     <DrawerContentScrollView showsVerticalScrollIndicator={false}>
@@ -66,7 +58,7 @@ const CustomDrawerContent = ({
               isFocused={selectedTab == item.label}
               onPress={() => {
                 setSelectedTab(item.label);
-                navigation.navigate(screenNames.Main_Layout);
+                navigation.navigate(screenNames.MainLayout);
               }}
             />
           ))}
@@ -100,20 +92,6 @@ const CustomDrawerContent = ({
 };
 
 const CustomDrawer = ({selectedTab, setSelectedTab}) => {
-  const [progress, setProgress] = useState(new Animated.Value(0));
-
-  const scale = interpolateNode(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 0.8],
-  });
-
-  const borderRadius = interpolateNode(progress, {
-    inputRange: [0, 1],
-    outputRange: [0, 25],
-  });
-
-  const animatedStyle = {borderRadius, transform: [{scale}]};
-
   const screenOptions = () => {
     return {
       drawerType: 'slide',
@@ -128,20 +106,19 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
     <View style={styles.background}>
       <Drawer.Navigator
         screenOptions={screenOptions()}
-        initialRouteName={screenNames.Main_Layout}
+        initialRouteName={screenNames.MainLayout}
         drawerContent={props => {
           return (
             <CustomDrawerContent
               {...props}
-              setProgress={setProgress}
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
             />
           );
         }}>
-        <Drawer.Screen name={screenNames.Main_Layout}>
+        <Drawer.Screen name={screenNames.MainLayout}>
           {props => (
-            <LayoutComponent {...props} drawerAnimationStyle={animatedStyle} />
+            <LayoutComponent {...props} />
           )}
         </Drawer.Screen>
       </Drawer.Navigator>

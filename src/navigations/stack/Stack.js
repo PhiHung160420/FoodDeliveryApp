@@ -23,7 +23,7 @@ const Stack = createStackNavigator();
 
 export const RootStack = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={'Map'}>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={CustomDrawer} />
 
       <Stack.Screen name="Onboarding" component={OnboardingScreen} /> 

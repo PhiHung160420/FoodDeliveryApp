@@ -1,5 +1,5 @@
 const screenNames = {
-  Main_Layout: 'Main_Layout',
+  MainLayout: 'MainLayout',
   Home: 'Home',
   Onboarding: 'Onboarding',
   SignIn: 'SignIn',

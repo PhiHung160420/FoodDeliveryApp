@@ -43,15 +43,15 @@ const FoodDetailComponent = (props) => {
             <Image source={icons.calories} style={styles.caloriesIcon} />
             <Text style={styles.caloriesText}>Calories</Text>
           </View>
-          <Image source={icons.love} style={[styles.heartIcon, {tintColor: foodItem?.isFavourite ? COLORS.primary : COLORS.gray,}]}/>
+          <Image source={icons.love} style={[styles.heartIcon, {tintColor: foodItem?.isFavourite ? COLORS.primary : COLORS.gray}]}/>
         </View>
 
-        <Image source={foodItem.image} style={styles.foodImage} resizeMode="contain" />
+        <Image source={foodItem?.image} style={styles.foodImage} resizeMode="contain" />
       </View>
 
       <View style={styles.foodInfo}>
-        <Text style={styles.foodName}>{foodItem?.name}</Text>
-        <Text style={styles.foodDescription}>{foodItem?.description}</Text>
+        <Text style={styles.foodName}>{foodItem?.name || ''}</Text>
+        <Text style={styles.foodDescription}>{foodItem?.description || ''}</Text>
 
         <View style={styles.flexRow}>
           <IconLabel
